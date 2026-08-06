@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+server.log
+expand.log
+nohup.out
+translate_cache.json
+cloudflared

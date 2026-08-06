@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>世界博物馆地图 · MUSEA ORBIS</title>
+<link rel="stylesheet" href="static/leaflet.css">
+<style>
+:root{
+  --parchment:#f2e9d5; --cream:#faf4e6; --card:#fbf6ea;
+  --ink:#33291c; --muted:#857655; --line:#d9c9a4;
+  --gold:#a5854a; --bronze:#7a5f33; --seal:#9e3b2e;
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
+  font-family:var(--serif);color:var(--ink)}
+#map,#globe{position:fixed;inset:0}
+#globe{display:none}
+.leaflet-container{background:var(--parchment)}
+/* 顶栏 */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:linear-gradient(rgba(250,244,230,.98),rgba(250,244,230,.90));
+  border-bottom:1px solid var(--line);box-shadow:0 1px 8px rgba(51,41,28,.10);
+  padding:8px 12px 9px}
+.brand{display:flex;align-items:center;justify-content:center;gap:10px}
+.brand .rule{flex:1;height:0;border-top:1px solid var(--gold);opacity:.55}
+.brand h1{margin:0;font-size:17px;font-weight:600;letter-spacing:.24em;color:var(--bronze);white-space:nowrap}
+.brand .sub{font-size:9px;letter-spacing:.14em;color:var(--muted);text-align:center;margin-top:1px}
+#searchrow{display:flex;gap:6px;margin-top:8px}
+#q{flex:1;min-width:0;background:var(--cream);border:1px solid var(--line);border-radius:2px;
+  padding:8px 10px;font-family:var(--serif);font-size:14px;color:var(--ink);outline:none}
+#q::placeholder{color:#b3a67f;font-style:italic}
+#q:focus{border-color:var(--gold)}
+.btn{font-family:var(--serif);font-size:13px;letter-spacing:.12em;cursor:pointer;
+  border-radius:2px;padding:8px 12px;transition:all .15s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--seal);color:#f8f1de;border:1px solid var(--seal)}
+.btn-outline{background:transparent;color:var(--bronze);border:1px solid var(--gold)}
+/* 分类 + 视图 */
+#chipsrow{display:flex;gap:5px;margin-top:7px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#chipsrow::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font-size:11.5px;letter-spacing:.08em;padding:4px 10px;border-radius:2px;
+  border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--serif)}
+.chip.on{background:var(--bronze);color:#f5eeda;border-color:var(--bronze)}
+.chip.view{margin-left:auto;border-color:var(--gold);color:var(--bronze)}
+/* 图例 */
+#legend{position:fixed;right:10px;bottom:10px;z-index:900;background:var(--cream);
+  border:1px solid var(--gold);padding:7px 10px;font-size:10.5px;color:var(--muted);
+  box-shadow:2px 2px 0 rgba(122,95,51,.14);letter-spacing:.04em;line-height:1.9}
+#legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+/* 底部面板 */
+#panel{position:fixed;left:0;right:0;bottom:0;z-index:950;max-height:46%;
+  background:linear-gradient(var(--card),#f6efdd);border-top:2px solid var(--gold);
+  box-shadow:0 -4px 16px rgba(51,41,28,.18);transform:translateY(105%);
+  transition:transform .25s ease;display:flex;flex-direction:column}
+#panel.show{transform:translateY(0)}
+#panel-head{display:flex;align-items:center;justify-content:space-between;
+  padding:9px 14px 7px;border-bottom:1px solid var(--line)}
+#panel-title{font-size:13px;letter-spacing:.18em;color:var(--bronze)}
+#panel-close{background:none;border:none;font-size:19px;color:var(--muted);cursor:pointer;font-family:var(--serif)}
+#panel-body{overflow-y:auto;padding:9px 12px 14px}
+.empty{color:var(--muted);font-size:13px;padding:14px 6px;font-style:italic;line-height:1.7}
+.item{background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:2px;padding:10px 12px;margin-bottom:9px;box-shadow:1px 1px 0 rgba(122,95,51,.08)}
+.item .ititle{font-size:15px;font-weight:600;color:var(--ink)}
+.item .iename{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:1px}
+.item .imeta{font-size:11.5px;color:var(--bronze);margin-top:5px;letter-spacing:.05em}
+.item .isnip{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.55}
+.item .itrans{font-size:12.5px;color:var(--seal);margin-top:5px;line-height:1.55;border-top:1px dashed var(--line);padding-top:5px}
+.item .iurl{font-size:10.5px;color:#a4956f;margin-top:5px;word-break:break-all}
+.item .iactions{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+.mini{font-size:12px;padding:5px 12px;letter-spacing:.1em;cursor:pointer;border-radius:2px;font-family:var(--serif)}
+.mini.go{background:var(--seal);color:#f8f1de;border:1px solid var(--seal)}
+.mini.line{background:transparent;color:var(--bronze);border:1px solid var(--gold)}
+.mini.plain{background:none;border:none;color:var(--muted);text-decoration:underline;padding:5px 4px}
+.badge{display:inline-block;font-size:10.5px;padding:1px 8px;margin-left:6px;
+  border:1px solid currentColor;border-radius:2px;letter-spacing:.05em;vertical-align:1px}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="globe"></div>
+<style>
+/* 提示横幅 */
+#banner{position:fixed;top:118px;left:12px;right:12px;z-index:1100;display:none;
+  background:var(--seal);color:#f8f1de;padding:9px 14px;font-size:13px;text-align:center;
+  border:1px solid #7e2f24;box-shadow:2px 2px 0 rgba(51,41,28,.2);letter-spacing:.06em}
+/* 弹窗（展厅铭牌） */
+.leaflet-popup-content-wrapper{background:var(--cream);color:var(--ink);
+  border:1px solid var(--gold);border-radius:2px;box-shadow:3px 3px 0 rgba(122,95,51,.18);
+  font-family:var(--serif)}
+.leaflet-popup-tip{background:var(--cream);border:1px solid var(--gold)}
+.leaflet-popup-content{margin:13px 16px;line-height:1.6}
+.pp-name{font-size:16px;font-weight:600;color:var(--bronze)}
+.pp-en{font-size:11.5px;color:var(--muted);font-style:italic}
+.pp-meta{font-size:12px;color:var(--muted);margin-top:5px}
+.pp-note{font-size:12px;color:#8a6f3f;margin-top:5px;border-top:1px dashed var(--line);padding-top:5px}
+.pp-cat{font-size:11px;color:var(--bronze);margin-top:4px;letter-spacing:.1em}
+.pp-btns{display:flex;gap:8px;margin-top:10px}
+.vr-btn{display:inline-block;background:var(--seal);color:#f8f1de;padding:7px 14px;
+  font-size:13px;letter-spacing:.18em;border:1px solid #7e2f24;cursor:pointer;font-family:var(--serif)}
+.vr-sub{font-size:11.5px;background:none;border:none;color:var(--muted);
+  text-decoration:underline;cursor:pointer;font-family:var(--serif);padding:7px 4px}
+/* 内嵌展厅 */
+#viewer{position:fixed;inset:0;z-index:1200;background:var(--parchment);
+  display:none;flex-direction:column}
+#vbar{display:flex;align-items:center;gap:6px;padding:8px 10px;
+  background:var(--cream);border-bottom:1px solid var(--gold)}
+#vtitle{flex:1;min-width:0;font-size:14px;color:var(--bronze);letter-spacing:.1em;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vbtn{font-size:12px;padding:6px 11px;letter-spacing:.08em;cursor:pointer;border-radius:2px;
+  font-family:var(--serif);background:transparent;color:var(--bronze);border:1px solid var(--gold)}
+.vbtn.on{background:var(--bronze);color:#f5eeda}
+.vbtn.closeb{background:var(--seal);color:#f8f1de;border-color:var(--seal)}
+#vframe{flex:1;border:none;background:#fff}
+#vblocked{flex:1;display:none;align-items:center;justify-content:center;padding:26px;text-align:center}
+#vblocked .vbcard{max-width:430px;background:var(--cream);border:1px solid var(--gold);
+  padding:26px 24px;box-shadow:3px 3px 0 rgba(122,95,51,.14)}
+#vblocked h3{margin:0 0 8px;font-size:16px;color:var(--bronze);letter-spacing:.1em}
+#vblocked p{font-size:13px;color:var(--muted);line-height:1.8;margin:8px 0}
+.vb-go{display:block;width:100%;margin:10px 0 0;padding:11px;background:var(--bronze);color:#f8f1de;
+  border:1px solid var(--gold);font-family:inherit;font-size:14px;letter-spacing:.18em;cursor:pointer}
+.vb-line{display:block;width:100%;margin:10px 0 0;padding:10px;background:none;border:1px solid var(--line);
+  color:var(--bronze);font-family:inherit;font-size:13px;letter-spacing:.15em;cursor:pointer}
+.vb-note{font-size:11px !important;opacity:.8}
+#vloading{position:absolute;left:0;right:0;bottom:0;top:41px;display:none;
+  align-items:center;justify-content:center;color:var(--bronze);font-size:14px;
+  letter-spacing:.2em;background:rgba(242,233,213,.92);z-index:5}
+/* 地球模式悬浮铭牌 */
+#gcard{position:fixed;left:12px;right:12px;bottom:14px;z-index:940;display:none;
+  background:var(--cream);border:1px solid var(--gold);box-shadow:3px 3px 0 rgba(122,95,51,.16);
+  padding:13px 16px}
+#gcard .pp-name{font-size:15px}
+#gcard .iactions{display:flex;gap:8px;margin-top:9px}
+#gclose{position:absolute;top:6px;right:10px;background:none;border:none;
+  color:var(--muted);font-size:17px;cursor:pointer;font-family:var(--serif)}
+</style>
+<div id="topbar">
+  <div class="brand">
+    <span class="rule"></span>
+    <span><h1>世界博物馆地图</h1><div class="sub">MUSEA ORBIS · 云 游 世 界 展 厅</div></span>
+    <span class="rule"></span>
+  </div>
+  <div id="searchrow">
+    <input id="q" placeholder="寻一座博物馆…（如：故宫、卢浮宫）" enterkeyhint="search">
+    <button class="btn btn-primary" id="btn-search">搜 寻</button>
+    <button class="btn btn-outline" id="btn-discover">寻 VR 展厅</button>
+  </div>
+  <div id="chipsrow"></div>
+</div>
+<div id="legend"></div>
+<div id="banner"></div>
+<div id="panel">
+  <div id="panel-head">
+    <span id="panel-title">图 录</span>
+    <button id="panel-close">×</button>
+  </div>
+  <div id="panel-body"></div>
+</div>
+<div id="gcard"><button id="gclose">×</button><div id="gcard-body"></div></div>
+<div id="viewer">
+  <div id="vbar">
+    <span id="vtitle"></span>
+    <button class="vbtn" data-vact="translate">译 文</button>
+    <button class="vbtn" data-vact="direct">原 文</button>
+    <button class="vbtn closeb" data-vact="close">✕ 闭</button>
+  </div>
+  <div id="vloading">展 厅 之 门 开 启 中 …</div>
+  <div id="vblocked"></div>
+  <iframe id="vframe" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer"></iframe>
+</div>
+<script src="static/leaflet.js"></script>
+<script src="static/three.min.js"></script>
+<script src="static/globe.gl.min.js"></script>
+<script>
+window.__errs=[];
+window.addEventListener('error',e=>{__errs.push((e.message||'?')+' @'+e.lineno+':'+e.colno);});
+/* ================= 数据与常量 ================= */
+const STATUS = {
+  verified:  {c:'#6f8f6a', label:'已验证'},
+  anti_bot:  {c:'#7e8aa0', label:'官方·有反爬'},
+  needs_proxy:{c:'#b08d57', label:'需代理'},
+  unverified:{c:'#a89c86', label:'待复核'},
+  custom:    {c:'#9e3b2e', label:'我的馆藏'},
+  auto:      {c:'#7e6a94', label:'自动收录'},
+};
+const CATS = {all:'全部', art:'艺术', history:'历史', nature:'自然', science:'科技', heritage:'遗址', general:'综合'};
+let MUSEUMS = [], DISCOVER = [], CURRENT_Q = '', CAT = 'all', VIEW = 'flat';
+const markers = {}; let pendingAdd = null, world = null, gcountries = null;
+
+/* ================= 地图 ================= */
+const map = L.map('map', {zoomControl:false, attributionControl:false, minZoom:2, worldCopyJump:true})
+  .setView([26, 108], 2);
+L.control.zoom({position:'bottomleft'}).addTo(map);
+fetch('static/countries.geo.json').then(r=>r.json()).then(g=>{
+  gcountries = g;
+  L.geoJSON(g, {style:{color:'#b69c6d', weight:0.8, fillColor:'#f7f0dd', fillOpacity:1}}).addTo(map);
+});
+
+function catName(c){ return CATS[c] || '综合'; }
+function popupHtml(m){
+  const st = STATUS[m.status] || STATUS.unverified;
+  return `<div class="pp">
+    <div class="pp-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
+    ${m.name_en ? `<div class="pp-en">${m.name_en}</div>` : ''}
+    <div class="pp-meta">${[m.city, m.country].filter(Boolean).join(' · ')}</div>
+    <div class="pp-cat">◈ ${catName(m.category)} · ${m.type || '线上展厅'}</div>
+    ${m.notes ? `<div class="pp-note">${m.notes}</div>` : ''}
+    <div class="pp-btns">
+      <button class="vr-btn" data-act="view" data-id="${m.id}">进 入 展 厅</button>
+      <button class="vr-sub" data-act="goto" data-id="${m.id}">前往本站 ↗</button>
+    </div></div>`;
+}
+function tipText(m){
+  const st = STATUS[m.status] || STATUS.unverified;
+  return `${m.name_zh}（${st.label}）· ${catName(m.category)}`;
+}
+function filtered(){ return MUSEUMS.filter(m => CAT==='all' || (m.category||'general')===CAT); }
+
+function renderMarkers(){
+  Object.values(markers).forEach(x=>map.removeLayer(x.mk));
+  for(const k in markers) delete markers[k];
+  filtered().forEach(m=>{
+    const c = (STATUS[m.status]||STATUS.unverified).c;
+    const mk = L.circleMarker([m.lat, m.lon], {
+      radius:7, color:'#5c4a28', weight:1.2, fillColor:c, fillOpacity:.92
+    }).addTo(map);
+    mk.bindPopup(popupHtml(m), {maxWidth:280});
+    mk.bindTooltip(m.name_zh, {direction:'top', offset:[0,-8]});
+    markers[m.id] = {mk, m};
+  });
+  if (world) updateGlobePoints();
+}
+
+/* ================= 分类与视图切换 ================= */
+const chipsrow = document.getElementById('chipsrow');
+function buildChips(){
+  let h = '';
+  for(const k in CATS) h += `<button class="chip ${CAT===k?'on':''}" data-cat="${k}">${CATS[k]}</button>`;
+  h += `<button class="chip view" data-view>${VIEW==='flat' ? '🌍 地球' : '🗺 平面'}</button>`;
+  chipsrow.innerHTML = h;
+}
+chipsrow.addEventListener('click', e=>{
+  const c = e.target.closest('[data-cat]');
+  if (c){ CAT = c.dataset.cat; buildChips(); renderMarkers(); return; }
+  if (e.target.closest('[data-view]')) toggleView();
+});
+
+/* ================= 图例 ================= */
+document.getElementById('legend').innerHTML =
+  Object.entries(STATUS).map(([k,v])=>`<div><span class="dot" style="background:${v.c}"></span>${v.label}</div>`).join('');
+
+/* ================= 面板 ================= */
+const panel = document.getElementById('panel'), pbody = document.getElementById('panel-body');
+document.getElementById('panel-close').onclick = ()=>panel.classList.remove('show');
+function showPanel(title, html){
+  document.getElementById('panel-title').textContent = title;
+  pbody.innerHTML = html; panel.classList.add('show');
+}
+function flyTo(id){
+  const x = markers[id]; if(!x) return;
+  panel.classList.remove('show');
+  map.flyTo([x.m.lat, x.m.lon], 5, {duration:1.2});
+  setTimeout(()=>x.mk.openPopup(), 1300);
+}
+
+/* ================= 搜索 ================= */
+async function doSearch(){
+  const q = document.getElementById('q').value.trim();
+  if(!q) return;
+  CURRENT_Q = q;
+  const r = await fetch('/api/search?q='+encodeURIComponent(q));
+  const d = await r.json();
+  if(!d.results.length){
+    showPanel('馆内检索', '<div class="empty">馆内未见此馆。<br>不妨点上方「寻 VR 展厅」，去馆外世界找找。</div>');
+    return;
+  }
+  showPanel('馆内检索 · ' + q, d.results.map(m=>{
+    const st = STATUS[m.status] || STATUS.unverified;
+    return `<div class="item">
+      <div class="item-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
+      <div class="item-meta">${[m.city, m.country].filter(Boolean).join(' · ')} · ${catName(m.category)} · ${m.type || ''}</div>
+      <div class="item-actions">
+        <button class="btn-go" data-act="view" data-id="${m.id}">进 入 展 厅</button>
+        <button class="btn-line" data-act="locate" data-id="${m.id}">定 位</button>
+      </div></div>`;
+  }).join(''));
+  flyTo(d.results[0].id);
+}
+
+/* ================= 网上发现 ================= */
+async function doDiscover(){
+  const q = document.getElementById('q').value.trim();
+  if(!q) return;
+  CURRENT_Q = q;
+  showPanel('寻 VR 展厅 · ' + q, '<div class="empty">正在检索四方网络…<br>约需十秒，请稍候 ☕</div>');
+  try{
+    const r = await fetch('/api/discover?q='+encodeURIComponent(q));
+    const d = await r.json();
+    DISCOVER = d.results || [];
+    if (d.error || !DISCOVER.length){
+      showPanel('寻 VR 展厅 · ' + q, '<div class="empty">未寻得相关线索，换个名字试试。</div>');
+      return;
+    }
+    showPanel('寻 VR 展厅 · ' + q, DISCOVER.map((r,i)=>`
+      <div class="item">
+        <div class="item-name">${r.is_vr?'🥽 ':''}${r.title}</div>
+        <div class="item-meta">${r.host}${r.from_site ? ' · 官网内发现' : ''}</div>
+        ${r.snippet ? `<div class="item-meta">${r.snippet}</div>` : ''}
+        <div class="tr-box" id="tr-${i}"></div>
+        <div class="item-actions">
+          <button class="btn-go" data-act="dview" data-i="${i}">查 看</button>
+          <button class="btn-line" data-act="dtr" data-i="${i}">译</button>
+          <button class="btn-line" data-act="add" data-i="${i}">收 入 地 图</button>
+        </div></div>`).join(''));
+  }catch(e){
+    showPanel('寻 VR 展厅 · ' + q, '<div class="empty">网络不佳，请稍后再试。</div>');
+  }
+}
+async function translateDiscover(i){
+  const r = DISCOVER[i]; if(!r) return;
+  const box = document.getElementById('tr-'+i);
+  box.textContent = '译写中…';
+  try{
+    const t1 = await (await fetch('/api/translate?text='+encodeURIComponent(r.title))).json();
+    let out = '【题】' + t1.text;
+    if (r.snippet){
+      const t2 = await (await fetch('/api/translate?text='+encodeURIComponent(r.snippet))).json();
+      out += '<br>【摘】' + t2.text;
+    }
+    box.innerHTML = out;
+  }catch(e){ box.textContent = '译写失败，稍后再试。'; }
+}
+
+/* ================= 收入地图 ================= */
+async function startAdd(r){
+  pendingAdd = r;
+  showPanel('收入地图', `<div class="empty">正在为「${r.title}」测定方位…</div>`);
+  try{
+    const g = await (await fetch('/api/geocode?q='+encodeURIComponent(CURRENT_Q))).json();
+    if(g.lat != null){ saveAdd(g.lat, g.lon); return; }
+  }catch(e){}
+  panel.classList.remove('show');
+  document.getElementById('banner').style.display = 'block';
+}
+map.on('click', e=>{
+  if(!pendingAdd) return;
+  saveAdd(e.latlng.lat, e.latlng.lng);
+});
+async function saveAdd(lat, lon){
+  const r = pendingAdd; pendingAdd = null;
+  document.getElementById('banner').style.display = 'none';
+  if (!HAS_API){ showPanel('提示','<div class="empty">静态版无法持久化收录，仅作演示。</div>'); return; }
+  const body = {name_zh: CURRENT_Q, name_en:'', city:'', country:'', lat, lon,
+                vr_url: r.url, type:'🌐 网上发现', notes: r.title};
+  const resp = await fetch('api/add', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const d = await resp.json();
+  if(d.ok){
+    const res = await (await fetch('/api/museums')).json();
+    MUSEUMS = res.museums; renderMarkers();
+    flyTo(d.museum.id);
+  }
+}
+
+/* ================= 搜索框事件 ================= */
+document.getElementById('btn-search').onclick = doSearch;
+document.getElementById('btn-discover').onclick = doDiscover;
+document.getElementById('q').addEventListener('keydown', e=>{ if(e.key==='Enter') doSearch(); });
+
+/* ================= 内嵌展厅 ================= */
+const viewer = document.getElementById('viewer'), vframe = document.getElementById('vframe'),
+      vtitle = document.getElementById('vtitle'), vloading = document.getElementById('vloading'),
+      vblocked = document.getElementById('vblocked');
+let V = null; /* 当前展厅: {name, url, translated} */
+
+function openViewer(name, url){
+  V = {name, url, translated:false};
+  vtitle.textContent = name;
+  viewer.style.display = 'flex';
+  vframe.style.display = 'none'; vblocked.style.display = 'none';
+  vloading.style.display = 'flex';
+  vframe.src = 'about:blank';
+  if (!HAS_API){ showFrame(url); return; }  // 静态模式：直接尝试内嵌
+  fetch('api/framecheck?url='+encodeURIComponent(url))
+    .then(r=>r.json()).then(d=>{
+      if(!V || V.url !== url) return;
+      if(d.frameable === true){ showFrame(url); }
+      else { showBlocked(d.reason || (d.frameable===null ? '无法连通检测' : '')); }
+    })
+    .catch(()=>{ if(V && V.url===url) showBlocked('检测失败'); });
+}
+function showFrame(url){
+  vloading.style.display = 'none'; vblocked.style.display = 'none';
+  vframe.style.display = 'block'; vframe.src = url;
+}
+function showBlocked(reason){
+  vloading.style.display = 'none';
+  vblocked.innerHTML = `<div class="vbcard">
+      <h3>此馆谢绝内嵌参观</h3>
+      <p>对方网站设置了防嵌入保护${reason ? '（'+reason+'）' : ''}，无法在此框内直接呈现。</p>
+      <button class="vb-go" data-vact="translated">📜 译 文 阅 览（代理翻译）</button>
+      <button class="vb-go" data-vact="embed">🖼 仍要尝试内嵌</button>
+      <button class="vb-line" data-vact="goto">直 接 前 往 本 站 ↗</button>
+      <p class="vb-note">译 文 阅 览 经本站代理抓取并翻译文字，<br>适合阅读展厅介绍；全景/VR画面请前往本站。</p>
+    </div>`;
+  vblocked.style.display = 'flex';
+}
+function closeViewer(){
+  viewer.style.display = 'none'; vframe.src = 'about:blank'; V = null;
+}
+function setViewerMode(kind){
+  if(!V) return;
+  vblocked.style.display = 'none'; vloading.style.display = 'flex'; vframe.style.display = 'none';
+  if(kind === 'translated'){
+    if (!HAS_API){ showBlocked('静态版不支持译文阅览，请直接前往本站。'); return; }
+    V.translated = true; showFrame('proxy?url='+encodeURIComponent(V.url)+'&t=1');
+  }
+  else if(kind === 'embed'){ V.translated = false; showFrame(V.url); }
+  else if(kind === 'raw'){ V.translated = false; showFrame(V.url); }
+}
+document.getElementById('vbar').addEventListener('click', e=>{
+  const b = e.target.closest('[data-vact]'); if(!b || !V) return;
+  const act = b.dataset.vact;
+  if(act === 'close') closeViewer();
+  else if(act === 'goto') location.href = V.url;
+  else if(act === 'translate'){ V.translated ? setViewerMode('raw') : setViewerMode('translated'); b.textContent = V.translated ? '原 文' : '译 文'; }
+  else if(act === 'translated') setViewerMode('translated');
+  else if(act === 'embed') setViewerMode('embed');
+});
+vblocked.addEventListener('click', e=>{
+  const b = e.target.closest('[data-vact]'); if(!b) return;
+  const act = b.dataset.vact;
+  if(act === 'translated') setViewerMode('translated');
+  else if(act === 'embed') setViewerMode('embed');
+  else if(act === 'goto') location.href = V.url;
+});
+
+/* ================= 全局按钮委派 ================= */
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-act]'); if(!b) return;
+  const act = b.dataset.act, id = b.dataset.id, i = b.dataset.i;
+  if(act === 'locate'){ e.stopPropagation(); flyTo(id); }
+  else if(act === 'view'){
+    e.stopPropagation();
+    const m = MUSEUMS.find(x=>x.id===id);
+    if(m) openViewer(m.name_zh, m.vr_url);
+  }
+  else if(act === 'goto'){
+    e.stopPropagation();
+    const m = MUSEUMS.find(x=>x.id===id);
+    if(m) location.href = m.vr_url;
+  }
+  else if(act === 'dview'){ e.stopPropagation(); openViewer(DISCOVER[i].title.slice(0,40), DISCOVER[i].url); }
+  else if(act === 'dtr'){ e.stopPropagation(); translateDiscover(i); }
+  else if(act === 'add'){ e.stopPropagation(); startAdd(DISCOVER[i]); }
+}, true);
+
+/* ================= 地球模式 ================= */
+const gcard = document.getElementById('gcard');
+document.getElementById('gclose').onclick = ()=>gcard.classList.remove('show');
+
+function updateGlobePoints(){
+  const pts = filtered().map(m=>({
+    lat:m.lat, lng:m.lon, m:m,
+    color:(STATUS[m.status]||STATUS.unverified).c, tip:tipText(m)
+  }));
+  world.pointsData(pts);
+}
+function globeCard(m){
+  const st = STATUS[m.status] || STATUS.unverified;
+  gcard.innerHTML = `<button id="gcard-close">✕</button>
+    <div class="gc-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
+    ${m.name_en ? `<div class="gc-en">${m.name_en}</div>` : ''}
+    <div class="gc-meta">${[m.city, m.country].filter(Boolean).join(' · ')} · ◈ ${catName(m.category)}</div>
+    <div class="item-actions">
+      <button class="btn-go" data-act="view" data-id="${m.id}">进 入 展 厅</button>
+      <button class="btn-line" data-act="goto" data-id="${m.id}">前往本站 ↗</button>
+    </div>`;
+  gcard.classList.add('show');
+  document.getElementById('gclose').onclick = ()=>gcard.classList.remove('show');
+}
+function initGlobe(){
+  if (world) return;
+  world = Globe()(document.getElementById('globe'))
+    .backgroundColor('#f2e9d5')
+    .showAtmosphere(false)
+    .polygonCapColor(()=> '#f7f0dd')
+    .polygonSideColor(()=> 'rgba(166,133,74,0.22)')
+    .polygonStrokeColor(()=> '#b69c6d')
+    .pointColor(d=>d.color)
+    .pointAltitude(0.012)
+    .pointRadius(0.55)
+    .pointLabel(d=>d.tip)
+    .onPointClick(d=>globeCard(d.m));
+  world.controls().autoRotate = true;
+  world.controls().autoRotateSpeed = 0.55;
+  world.pointOfView({lat:28, lng:108, altitude:2.1}, 800);
+  const setSize = ()=> world.width(window.innerWidth).height(window.innerHeight);
+  setSize(); window.addEventListener('resize', setSize);
+  if (gcountries) world.polygonsData(gcountries.features);
+  else fetch('static/countries.geo.json').then(r=>r.json()).then(g=>{ gcountries=g; world.polygonsData(g.features); });
+  updateGlobePoints();
+}
+function toggleView(){
+  VIEW = VIEW==='flat' ? 'globe' : 'flat';
+  document.getElementById('map').style.display   = VIEW==='flat'  ? 'block' : 'none';
+  document.getElementById('globe').style.display = VIEW==='globe' ? 'block' : 'none';
+  document.getElementById('legend').style.display= VIEW==='flat'  ? 'block' : 'none';
+  buildChips();
+  if (VIEW==='globe') initGlobe();
+}
+
+/* ================= 启动 ================= */
+let HAS_API = false;
+async function loadMuseums(retry){
+  retry = retry == null ? 2 : retry;
+  try{
+    const r = await fetch('api/museums');
+    const d = await r.json();
+    if (!d.museums || !d.museums.length) throw new Error('empty');
+    HAS_API = true;
+    MUSEUMS = d.museums;
+    renderMarkers(); buildChips();
+  }catch(e){
+    if (retry > 0) return setTimeout(()=>loadMuseums(retry-1), 1200);
+    // 静态模式（无后端，如 GitHub Pages）：使用内嵌数据
+    if (window.MUSEUMS_EMBED && window.MUSEUMS_EMBED.length){
+      MUSEUMS = window.MUSEUMS_EMBED;
+      renderMarkers(); buildChips();
+      const bd = $('btn-discover');
+      if (bd){ bd.disabled = true; bd.style.opacity = .45; bd.title = '静态版不支持在线发现'; }
+    } else {
+      showPanel('提示', '<div class="empty">馆藏目录载入失败，请刷新页面。</div>');
+    }
+  }
+}
+buildChips();
+loadMuseums();
+</script>
+</body>
+</html>

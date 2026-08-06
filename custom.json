@@ -1,0 +1,16 @@
+[
+  {
+    "id": "custom-1786032895",
+    "name_zh": "埃及博物馆",
+    "name_en": "",
+    "city": "",
+    "country": "",
+    "lat": 30.0131,
+    "lon": 31.2089,
+    "vr_url": "https://gem.eg/",
+    "type": "🌐 网上发现",
+    "status": "custom",
+    "notes": "Grand Egyptian Museum 官方",
+    "category": "history"
+  }
+]
