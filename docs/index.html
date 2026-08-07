@@ -49,6 +49,15 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
   border:1px solid var(--gold);padding:7px 10px;font-size:10.5px;color:var(--muted);
   box-shadow:2px 2px 0 rgba(122,95,51,.14);letter-spacing:.04em;line-height:1.9}
 #legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+/* 博物馆图标标记 */
+.mk-wrap{background:none !important;border:none !important}
+.mk{width:22px;height:22px;position:relative}
+.mk-ico{width:22px;height:22px;color:#7a5f33;filter:drop-shadow(0 1px 1px rgba(60,45,20,.4))}
+.mk-txt{position:absolute;top:23px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-size:10.5px;letter-spacing:.05em;color:#3a2e1c;background:rgba(250,244,230,.92);
+  border:1px solid rgba(166,133,74,.45);padding:1px 5px;border-radius:2px;display:none;
+  box-shadow:1px 1px 2px rgba(90,70,40,.18)}
+#map.show-labels .mk-txt{display:block}
 /* 底部面板 */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:950;max-height:46%;
   background:linear-gradient(var(--card),#f6efdd);border-top:2px solid var(--gold);
@@ -218,20 +227,26 @@ function tipText(m){
 }
 function filtered(){ return MUSEUMS.filter(m => CAT==='all' || (m.category||'general')===CAT); }
 
+const MK_ICON = `<svg viewBox="0 0 24 24" class="mk-ico" aria-hidden="true"><path fill="currentColor" d="M12 2.4 21.6 8.3v1.6H2.4V8.3L12 2.4z"/><path fill="currentColor" d="M4.1 11h2.5v6.4H4.1zM8.3 11h2.5v6.4H8.3zM12.5 11H15v6.4h-2.5zM16.7 11h2.5v6.4h-2.5z"/><path fill="currentColor" d="M2.7 18.4h18.6v1.6H2.7zM1.9 20.8h20.2v1.4H1.9z"/></svg>`;
 function renderMarkers(){
   Object.values(markers).forEach(x=>map.removeLayer(x.mk));
   for(const k in markers) delete markers[k];
   filtered().forEach(m=>{
-    const c = (STATUS[m.status]||STATUS.unverified).c;
-    const mk = L.circleMarker([m.lat, m.lon], {
-      radius:7, color:'#5c4a28', weight:1.2, fillColor:c, fillOpacity:.92
+    const mk = L.marker([m.lat, m.lon], {
+      icon: L.divIcon({
+        className: 'mk-wrap',
+        html: `<div class="mk">${MK_ICON}<span class="mk-txt">${m.name_zh}</span></div>`,
+        iconSize: [22,22], iconAnchor: [11,11]
+      }),
+      title: m.name_zh
     }).addTo(map);
     mk.bindPopup(popupHtml(m), {maxWidth:280});
-    mk.bindTooltip(m.name_zh, {direction:'top', offset:[0,-8]});
     markers[m.id] = {mk, m};
   });
   if (world) updateGlobePoints();
 }
+function updLabels(){ document.getElementById('map').classList.toggle('show-labels', map.getZoom() >= 4); }
+map.on('zoomend', updLabels); updLabels();
 
 /* ================= 分类与视图切换 ================= */
 const chipsrow = document.getElementById('chipsrow');
@@ -249,7 +264,7 @@ chipsrow.addEventListener('click', e=>{
 
 /* ================= 图例 ================= */
 document.getElementById('legend').innerHTML =
-  Object.entries(STATUS).map(([k,v])=>`<div><span class="dot" style="background:${v.c}"></span>${v.label}</div>`).join('');
+  '<div style="color:#7a5f33;font-size:11.5px;letter-spacing:.08em">🏛 点击馆标进入展厅<br>放大地图显示馆名</div>';
 
 /* ================= 面板 ================= */
 const panel = document.getElementById('panel'), pbody = document.getElementById('panel-body');
@@ -491,7 +506,7 @@ document.getElementById('gclose').onclick = ()=>gcard.classList.remove('show');
 function updateGlobePoints(){
   const pts = filtered().map(m=>({
     lat:m.lat, lng:m.lon, m:m,
-    color:(STATUS[m.status]||STATUS.unverified).c, tip:tipText(m)
+    color:'#8a6a35', tip:tipText(m)
   }));
   world.pointsData(pts);
 }
