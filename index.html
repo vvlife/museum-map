@@ -17,6 +17,18 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
   font-family:var(--serif);color:var(--ink)}
 #map,#globe{position:fixed;inset:0}
 #globe{display:none}
+#listview{display:none;position:fixed;top:118px;bottom:0;left:0;right:0;z-index:800;
+  background:var(--parchment);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 12px 30px}
+.lrow{display:flex;gap:10px;align-items:center;background:var(--cream);border:1px solid var(--line);
+  padding:10px 12px;margin-bottom:8px;box-shadow:2px 2px 0 rgba(122,95,51,.10)}
+.l-ico{flex:none;width:26px}.l-ico svg{width:26px;height:26px;color:#7a5f33}
+.l-main{flex:1;min-width:0}
+.l-name{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:.04em}
+.l-name .badge{font-size:11px;font-weight:400;margin-left:7px;letter-spacing:.05em}
+.l-en{font-size:11px;color:var(--muted);font-style:italic;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.l-meta{font-size:11.5px;color:var(--muted);margin-top:3px;letter-spacing:.05em}
+.l-actions{flex:none;display:flex;flex-direction:column;gap:6px}
+.l-actions .btn-go,.l-actions .btn-line{padding:6px 12px;font-size:12px;letter-spacing:.1em;white-space:nowrap}
 .leaflet-container{background:var(--parchment)}
 /* 顶栏 */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:1000;
@@ -58,9 +70,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
 .mk-ico{width:22px;height:22px;color:#7a5f33;filter:drop-shadow(0 1px 1px rgba(60,45,20,.4))}
 .mk-txt{position:absolute;top:23px;left:50%;transform:translateX(-50%);white-space:nowrap;
   font-size:10.5px;letter-spacing:.05em;color:#3a2e1c;background:rgba(250,244,230,.92);
-  border:1px solid rgba(166,133,74,.45);padding:1px 5px;border-radius:2px;display:none;
+  border:1px solid rgba(166,133,74,.45);padding:1px 5px;border-radius:2px;
   box-shadow:1px 1px 2px rgba(90,70,40,.18)}
-#map.show-labels .mk-txt{display:block}
 /* 底部面板 */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:950;max-height:46%;
   background:linear-gradient(var(--card),#f6efdd);border-top:2px solid var(--gold);
@@ -94,6 +105,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
 <div id="map"></div>
 <div id="splash">馆 藏 展 陈 布 置 中 …</div>
 <div id="globe"></div>
+<div id="listview"><div id="listitems"></div></div>
 <style>
 /* 提示横幅 */
 #banner{position:fixed;top:118px;left:12px;right:12px;z-index:1100;display:none;
@@ -175,6 +187,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
 <div id="viewer">
   <div id="vbar">
     <span id="vtitle"></span>
+    <button class="vbtn" data-vact="zout">➖</button>
+    <button class="vbtn" data-vact="zin">➕</button>
     <button class="vbtn" data-vact="translate">译 文</button>
     <button class="vbtn" data-vact="direct">原 文</button>
     <button class="vbtn closeb" data-vact="close">✕ 闭</button>
@@ -258,13 +272,15 @@ const chipsrow = document.getElementById('chipsrow');
 function buildChips(){
   let h = '';
   for(const k in CATS) h += `<button class="chip ${CAT===k?'on':''}" data-cat="${k}">${CATS[k]}</button>`;
-  h += `<button class="chip view" data-view>${VIEW==='flat' ? '🌍 地球' : '🗺 平面'}</button>`;
+  h += `<button class="chip view ${VIEW==='globe'?'on':''}" data-view="globe">🌍 地球</button>`;
+  h += `<button class="chip view ${VIEW==='list'?'on':''}" data-view="list">☰ 名录</button>`;
   chipsrow.innerHTML = h;
 }
 chipsrow.addEventListener('click', e=>{
   const c = e.target.closest('[data-cat]');
-  if (c){ CAT = c.dataset.cat; buildChips(); renderMarkers(); return; }
-  if (e.target.closest('[data-view]')) toggleView();
+  if (c){ CAT = c.dataset.cat; buildChips(); renderMarkers(); if (VIEW==='list') renderList(); return; }
+  const v = e.target.closest('[data-view]');
+  if (v) setView(v.dataset.view);
 });
 
 /* ================= 图例 ================= */
@@ -290,13 +306,22 @@ async function doSearch(){
   const q = document.getElementById('q').value.trim();
   if(!q) return;
   CURRENT_Q = q;
-  const r = await fetch('/api/search?q='+encodeURIComponent(q));
-  const d = await r.json();
-  if(!d.results.length){
+  if (VIEW === 'list'){ LIST_Q = q; renderList(); return; }
+  let results;
+  if (HAS_API){
+    const r = await fetch('/api/search?q='+encodeURIComponent(q));
+    const d = await r.json();
+    results = d.results;
+  } else {
+    // 静态版：本地过滤
+    const qq = q.toLowerCase();
+    results = MUSEUMS.filter(m => (m.name_zh+' '+(m.name_en||'')+' '+(m.city||'')+' '+(m.country||'')).toLowerCase().includes(qq));
+  }
+  if(!results.length){
     showPanel('馆内检索', '<div class="empty">馆内未见此馆。<br>不妨点上方「寻 VR 展厅」，去馆外世界找找。</div>');
     return;
   }
-  showPanel('馆内检索 · ' + q, d.results.map(m=>{
+  showPanel('馆内检索 · ' + q, results.map(m=>{
     const st = STATUS[m.status] || STATUS.unverified;
     return `<div class="item">
       <div class="item-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
@@ -306,7 +331,7 @@ async function doSearch(){
         <button class="btn-line" data-act="locate" data-id="${m.id}">定 位</button>
       </div></div>`;
   }).join(''));
-  flyTo(d.results[0].id);
+  flyTo(results[0].id);
 }
 
 /* ================= 网上发现 ================= */
@@ -419,6 +444,7 @@ function armWatchdog(url){
 function openViewer(name, url, fb){
   if (fb === false){ location.href = url; return; }  // 已知防嵌入：直接跳转，不弹卡
   V = {name, url, translated:false};
+  VZ = 1; applyZoom();
   vtitle.textContent = name;
   viewer.style.display = 'flex';
   vframe.style.display = 'none'; vblocked.style.display = 'none';
@@ -469,11 +495,21 @@ function setViewerMode(kind){
   else if(kind === 'embed'){ V.translated = false; showFrame(V.url); }
   else if(kind === 'raw'){ V.translated = false; showFrame(V.url); }
 }
+let VZ = 1;
+function applyZoom(){
+  vframe.style.transform = 'scale(' + VZ + ')';
+  vframe.style.transformOrigin = '0 0';
+  vframe.style.width = (100 / VZ) + '%';
+  vframe.style.height = (100 / VZ) + '%';
+}
 document.getElementById('vbar').addEventListener('click', e=>{
   const b = e.target.closest('[data-vact]'); if(!b || !V) return;
   const act = b.dataset.vact;
   if(act === 'close') closeViewer();
   else if(act === 'goto') location.href = V.url;
+  else if(act === 'zin'){ VZ = Math.min(3, +(VZ + 0.5).toFixed(1)); applyZoom(); }
+  else if(act === 'zout'){ VZ = Math.max(0.5, +(VZ - 0.5).toFixed(1)); applyZoom(); }
+  else if(act === 'direct') setViewerMode('raw');
   else if(act === 'translate'){ V.translated ? setViewerMode('raw') : setViewerMode('translated'); b.textContent = V.translated ? '原 文' : '译 文'; }
   else if(act === 'translated') setViewerMode('translated');
   else if(act === 'embed') setViewerMode('embed');
@@ -490,7 +526,7 @@ vblocked.addEventListener('click', e=>{
 document.addEventListener('click', e=>{
   const b = e.target.closest('[data-act]'); if(!b) return;
   const act = b.dataset.act, id = b.dataset.id, i = b.dataset.i;
-  if(act === 'locate'){ e.stopPropagation(); flyTo(id); }
+  if(act === 'locate'){ e.stopPropagation(); if (VIEW !== 'flat'){ VIEW = 'flat'; showViewPane(); } flyTo(id); }
   else if(act === 'view'){
     e.stopPropagation();
     const m = MUSEUMS.find(x=>x.id===id);
@@ -505,6 +541,33 @@ document.addEventListener('click', e=>{
   else if(act === 'dtr'){ e.stopPropagation(); translateDiscover(i); }
   else if(act === 'add'){ e.stopPropagation(); startAdd(DISCOVER[i]); }
 }, true);
+
+/* ================= 名录模式 ================= */
+let LIST_Q = '';
+function renderList(){
+  const q = LIST_Q.trim().toLowerCase();
+  const rows = filtered().filter(m => !q ||
+    (m.name_zh + ' ' + (m.name_en||'') + ' ' + (m.city||'') + ' ' + (m.country||'')).toLowerCase().includes(q));
+  const el = document.getElementById('listitems');
+  el.innerHTML = rows.map(m=>{
+    const st = STATUS[m.status] || STATUS.unverified;
+    return `<div class="lrow">
+      <div class="l-ico">${MK_ICON}</div>
+      <div class="l-main">
+        <div class="l-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
+        ${m.name_en ? `<div class="l-en">${m.name_en}</div>` : ''}
+        <div class="l-meta">${[m.city, m.country].filter(Boolean).join(' · ')} · ◈ ${catName(m.category)}</div>
+      </div>
+      <div class="l-actions">
+        <button class="btn-go" data-act="view" data-id="${m.id}">进展厅</button>
+        <button class="btn-line" data-act="locate" data-id="${m.id}">定位</button>
+      </div>
+    </div>`;
+  }).join('') || '<div class="empty">未寻得相符之馆。</div>';
+}
+document.getElementById('q').addEventListener('input', e=>{
+  if (VIEW === 'list'){ LIST_Q = e.target.value; renderList(); }
+});
 
 /* ================= 地球模式 ================= */
 const gcard = document.getElementById('gcard');
@@ -568,20 +631,31 @@ function loadGlobeLibs(){
   });
   return globeLibsP;
 }
-async function toggleView(){
-  const chip = document.querySelector('[data-view]');
-  if (VIEW === 'flat' && !window.Globe){
+async function enterGlobe(){
+  const chip = document.querySelector('[data-view="globe"]');
+  if (!window.Globe){
     if (chip) chip.textContent = '🌍 加载中…';
     try{ await loadGlobeLibs(); }
     catch(e){ if (chip) chip.textContent = '🌍 地球'; alert('地球组件加载失败，请检查网络后重试'); return; }
     if (chip) chip.textContent = '🌍 地球';
   }
-  VIEW = VIEW==='flat' ? 'globe' : 'flat';
+  VIEW = 'globe';
+  showViewPane();
+  initGlobe();
+}
+function showViewPane(){
   document.getElementById('map').style.display   = VIEW==='flat'  ? 'block' : 'none';
   document.getElementById('globe').style.display = VIEW==='globe' ? 'block' : 'none';
+  document.getElementById('listview').style.display = VIEW==='list' ? 'block' : 'none';
   document.getElementById('legend').style.display= VIEW==='flat'  ? 'block' : 'none';
+  if (VIEW==='flat') setTimeout(()=>map.invalidateSize(), 150);
+  if (VIEW==='list') renderList();
   buildChips();
-  if (VIEW==='globe') initGlobe();
+}
+function setView(v){
+  if (v === 'globe'){ enterGlobe(); return; }
+  VIEW = (VIEW === v) ? 'flat' : v;   // 再点一次回平面
+  showViewPane();
 }
 
 /* ================= 启动 ================= */
@@ -612,7 +686,7 @@ async function loadMuseums(retry){
     if (window.MUSEUMS_EMBED && window.MUSEUMS_EMBED.length){
       MUSEUMS = window.MUSEUMS_EMBED;
       renderMarkers(); buildChips();
-      const bd = $('btn-discover');
+      const bd = document.getElementById('btn-discover');
       if (bd){ bd.disabled = true; bd.style.opacity = .45; bd.title = '静态版不支持在线发现'; }
     } else {
       showPanel('提示', '<div class="empty">馆藏目录载入失败，请刷新页面。</div>');

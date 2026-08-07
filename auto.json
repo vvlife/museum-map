@@ -408,12 +408,12 @@
     "lat": 30.25,
     "lon": 120.15,
     "category": "general",
-    "vr_url": "https://www.zhejiangmuseum.com/",
-    "type": "🏛 官方网站",
+    "vr_url": "https://www.nbvr360.com/360/toulong/",
+    "type": "🥽 VR 全景",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "田螺山遗址VR全景（用户提供）",
     "needs_review": false,
-    "frameable": null
+    "frameable": true
   },
   {
     "id": "auto-1786041514890",
