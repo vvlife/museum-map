@@ -12,7 +12,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   },
   {
     "id": "auto-1786034370-1",
@@ -27,7 +28,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": true
   },
   {
     "id": "auto-1786034380-2",
@@ -42,7 +44,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "中文讲解",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": null
   },
   {
     "id": "auto-1786034397-3",
@@ -57,7 +60,8 @@
     "type": "🌐 自动发现",
     "status": "auto",
     "notes": "Tate Modern | Tate",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034417-4",
@@ -72,7 +76,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034427-5",
@@ -87,7 +92,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034464-6",
@@ -102,7 +108,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": true
   },
   {
     "id": "auto-1786034483-7",
@@ -117,7 +124,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034495-8",
@@ -132,7 +140,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034577-10",
@@ -147,7 +156,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "云游上博",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": null
   },
   {
     "id": "auto-1786034584-11",
@@ -162,7 +172,8 @@
     "type": "🌐 自动发现",
     "status": "auto",
     "notes": "南京博物院",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": true
   },
   {
     "id": "auto-1786034592-12",
@@ -177,7 +188,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "线上展览",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034599-13",
@@ -192,7 +204,8 @@
     "type": "🌐 自动发现",
     "status": "auto",
     "notes": "湖南省博物馆",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": true
   },
   {
     "id": "auto-1786034608-14",
@@ -207,7 +220,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "数字苏博",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034618-15",
@@ -222,7 +236,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "导赏服务",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034649-16",
@@ -237,7 +252,8 @@
     "type": "🌐 自动发现",
     "status": "auto",
     "notes": "National Museum of Singapore - NHB",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034656-17",
@@ -252,7 +268,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034690-18",
@@ -267,7 +284,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "虚拟漫游",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034700-19",
@@ -282,7 +300,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   },
   {
     "id": "auto-1786034707-20",
@@ -297,7 +316,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": true
   },
   {
     "id": "auto-1786034722-21",
@@ -312,7 +332,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034734-22",
@@ -327,7 +348,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034742-23",
@@ -342,7 +364,8 @@
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
     "notes": "查看导览\r\n全景图",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": false
   },
   {
     "id": "auto-1786034789-24",
@@ -357,7 +380,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034797-25",
@@ -372,7 +396,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "auto-1786034805-26",
@@ -387,7 +412,8 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   },
   {
     "id": "auto-1786041506611",
@@ -402,7 +428,8 @@
     "status": "auto",
     "category": "general",
     "notes": "中国国家博物馆数字展厅 - chnmuseum.cn",
-    "needs_review": true
+    "needs_review": true,
+    "frameable": null
   },
   {
     "id": "auto-1786041514890",
@@ -417,7 +444,8 @@
     "status": "verified",
     "category": "history",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   },
   {
     "id": "auto-1786041525782",
@@ -432,7 +460,8 @@
     "status": "verified",
     "category": "art",
     "notes": "人工复核官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   },
   {
     "id": "curated-1786071150126",
@@ -447,7 +476,8 @@
     "status": "verified",
     "category": "nature",
     "notes": "人工补录官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": true
   },
   {
     "id": "curated-1786071150128",
@@ -462,7 +492,8 @@
     "status": "verified",
     "category": "art",
     "notes": "人工补录官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "curated-1786071150129",
@@ -477,7 +508,8 @@
     "status": "verified",
     "category": "art",
     "notes": "人工补录官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": false
   },
   {
     "id": "curated-1786071150130",
@@ -492,6 +524,7 @@
     "status": "verified",
     "category": "history",
     "notes": "人工补录官方入口",
-    "needs_review": false
+    "needs_review": false,
+    "frameable": null
   }
 ]

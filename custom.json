@@ -11,6 +11,7 @@
     "type": "🌐 网上发现",
     "status": "custom",
     "notes": "Grand Egyptian Museum 官方",
-    "category": "history"
+    "category": "history",
+    "frameable": false
   }
 ]

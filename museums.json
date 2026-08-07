@@ -20,7 +20,8 @@
       "type": "360° 全景线上参观",
       "status": "verified",
       "notes": "官方线上参观入口，含多个展厅 360° 游览",
-      "category": "general"
+      "category": "general",
+      "frameable": false
     },
     {
       "id": "met",
@@ -34,7 +35,8 @@
       "type": "The Met 360° Project",
       "status": "anti_bot",
       "notes": "官方 360° 视频项目，覆盖六大标志性空间",
-      "category": "general"
+      "category": "general",
+      "frameable": null
     },
     {
       "id": "nmnh",
@@ -48,7 +50,8 @@
       "type": "全景虚拟游览（支持VR模式）",
       "status": "verified",
       "notes": "官方虚拟游览系统，展厅级漫游，质量极高",
-      "category": "nature"
+      "category": "nature",
+      "frameable": false
     },
     {
       "id": "vatican",
@@ -62,7 +65,8 @@
       "type": "WebVR 360° 全景",
       "status": "verified",
       "notes": "官方 WebVR，西斯廷礼拜堂超高精度全景",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "uffizi",
@@ -76,7 +80,8 @@
       "type": "HyperVisions 虚拟展览",
       "status": "verified",
       "notes": "官方虚拟展览系列",
-      "category": "art"
+      "category": "art",
+      "frameable": true
     },
     {
       "id": "gugong",
@@ -90,7 +95,8 @@
       "type": "全景故宫（360° 实景漫游）",
       "status": "verified",
       "notes": "官方全景系统，国内直连，覆盖主要宫殿院落",
-      "category": "heritage"
+      "category": "heritage",
+      "frameable": false
     },
     {
       "id": "dunhuang",
@@ -104,7 +110,8 @@
       "type": "数字敦煌 洞窟全景漫游",
       "status": "verified",
       "notes": "30+ 洞窟高精度壁画全景，国内直连",
-      "category": "heritage"
+      "category": "heritage",
+      "frameable": false
     },
     {
       "id": "chnmuseum",
@@ -118,7 +125,8 @@
       "type": "数字展厅（虚拟展览）",
       "status": "verified",
       "notes": "官网入口，站内『数字展厅』含多个虚拟展览",
-      "category": "general"
+      "category": "general",
+      "frameable": true
     },
     {
       "id": "annefrank",
@@ -132,7 +140,8 @@
       "type": "官方VR应用/虚拟参观",
       "status": "verified",
       "notes": "提供 Anne Frank House VR 应用及在线虚拟参观",
-      "category": "history"
+      "category": "history",
+      "frameable": false
     },
     {
       "id": "rijksmuseum",
@@ -146,7 +155,8 @@
       "type": "Masterpieces Up Close 超高清在线探索",
       "status": "verified",
       "notes": "官网已验证可打开；可缩放查看《夜巡》等镇馆之作",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "pergamon",
@@ -160,7 +170,8 @@
       "type": "官网入口（360°资源部分托管于 Google Arts）",
       "status": "verified",
       "notes": "柏林国立博物馆群官网；注意佩加蒙主馆 2023 起闭馆翻新，线上资源尤显珍贵",
-      "category": "heritage"
+      "category": "heritage",
+      "frameable": null
     },
     {
       "id": "prado",
@@ -174,7 +185,8 @@
       "type": "官方虚拟游览",
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），浏览器可打开",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "orsay",
@@ -188,7 +200,8 @@
       "type": "官方虚拟游览",
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），浏览器可打开",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "nhm_london",
@@ -202,7 +215,8 @@
       "type": "Virtual Museum 官方虚拟游览",
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），含蓝鲸大厅等全景",
-      "category": "nature"
+      "category": "nature",
+      "frameable": null
     },
     {
       "id": "british_museum",
@@ -216,7 +230,8 @@
       "type": "Google Arts & Culture 虚拟展厅（支持Cardboard VR）",
       "status": "needs_proxy",
       "notes": "世界最早公共博物馆；GAC 街景式漫游非常成熟",
-      "category": "general"
+      "category": "general",
+      "frameable": null
     },
     {
       "id": "vangogh",
@@ -230,7 +245,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "全球最大梵高收藏",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "moma",
@@ -244,7 +260,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "guggenheim",
@@ -258,7 +275,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "赖特螺旋建筑本身即是看点",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "masp",
@@ -272,7 +290,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "著名的『悬浮画架』陈列在 VR 中效果极佳",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "tnm_tokyo",
@@ -286,7 +305,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "日本最古老国立博物馆",
-      "category": "general"
+      "category": "general",
+      "frameable": null
     },
     {
       "id": "nmk_seoul",
@@ -300,7 +320,8 @@
       "type": "Google Arts & Culture 虚拟展厅",
       "status": "needs_proxy",
       "notes": "",
-      "category": "general"
+      "category": "general",
+      "frameable": null
     },
     {
       "id": "versailles",
@@ -314,7 +335,8 @@
       "type": "官方虚拟游览",
       "status": "unverified",
       "notes": "子域名本次测试超时，待复核；备用：en.chateauversailles.fr 官网",
-      "category": "heritage"
+      "category": "heritage",
+      "frameable": null
     },
     {
       "id": "hermitage",
@@ -328,7 +350,8 @@
       "type": "官方虚拟游览",
       "status": "unverified",
       "notes": "本次测试连接超时，待复核",
-      "category": "art"
+      "category": "art",
+      "frameable": null
     },
     {
       "id": "acropolis",
@@ -342,7 +365,8 @@
       "type": "官网入口（虚拟游览页面待确认）",
       "status": "unverified",
       "notes": "旧虚拟游览链接 404，需从官网重新定位入口",
-      "category": "heritage"
+      "category": "heritage",
+      "frameable": false
     }
   ]
 }

@@ -171,8 +171,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
   <iframe id="vframe" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer"></iframe>
 </div>
 <script src="static/leaflet.js"></script>
-<script src="static/three.min.js"></script>
-<script src="static/globe.gl.min.js"></script>
+<!-- three/globe 库改为点击「地球」时懒加载，首屏不再背 2MB 负担 -->
 <script>
 window.__errs=[];
 window.addEventListener('error',e=>{__errs.push((e.message||'?')+' @'+e.lineno+':'+e.colno);});
@@ -373,15 +372,31 @@ const viewer = document.getElementById('viewer'), vframe = document.getElementBy
       vtitle = document.getElementById('vtitle'), vloading = document.getElementById('vloading'),
       vblocked = document.getElementById('vblocked');
 let V = null; /* 当前展厅: {name, url, translated} */
+let vwd = null; /* iframe 加载看门狗 */
 
-function openViewer(name, url){
+vframe.addEventListener('load', ()=>{
+  if (vframe.src && !vframe.src.endsWith('about:blank')){
+    clearTimeout(vwd);
+    vloading.style.display = 'none';
+  }
+});
+function armWatchdog(url){
+  clearTimeout(vwd);
+  vwd = setTimeout(()=>{
+    if (V && vloading.style.display !== 'none') showBlocked('加载超时（网络缓慢或对方拦截）');
+  }, 15000);
+}
+
+function openViewer(name, url, fb){
   V = {name, url, translated:false};
   vtitle.textContent = name;
   viewer.style.display = 'flex';
   vframe.style.display = 'none'; vblocked.style.display = 'none';
   vloading.style.display = 'flex';
   vframe.src = 'about:blank';
-  if (!HAS_API){ showFrame(url); return; }  // 静态模式：直接尝试内嵌
+  if (fb === true){ showFrame(url); return; }       // 已知可内嵌：直接开
+  if (fb === false){ showBlocked('防嵌入保护'); return; } // 已知防嵌入：直接给选项
+  if (!HAS_API){ showFrame(url); return; }  // 未知+静态：直接试，看门狗兜底
   fetch('api/framecheck?url='+encodeURIComponent(url))
     .then(r=>r.json()).then(d=>{
       if(!V || V.url !== url) return;
@@ -391,8 +406,10 @@ function openViewer(name, url){
     .catch(()=>{ if(V && V.url===url) showBlocked('检测失败'); });
 }
 function showFrame(url){
-  vloading.style.display = 'none'; vblocked.style.display = 'none';
+  vblocked.style.display = 'none';
+  vloading.style.display = 'flex';
   vframe.style.display = 'block'; vframe.src = url;
+  armWatchdog(url);
 }
 function showBlocked(reason){
   vloading.style.display = 'none';
@@ -444,7 +461,7 @@ document.addEventListener('click', e=>{
   else if(act === 'view'){
     e.stopPropagation();
     const m = MUSEUMS.find(x=>x.id===id);
-    if(m) openViewer(m.name_zh, m.vr_url);
+    if(m) openViewer(m.name_zh, m.vr_url, m.frameable);
   }
   else if(act === 'goto'){
     e.stopPropagation();
@@ -502,7 +519,30 @@ function initGlobe(){
   else fetch('static/countries.geo.json').then(r=>r.json()).then(g=>{ gcountries=g; world.polygonsData(g.features); });
   updateGlobePoints();
 }
-function toggleView(){
+let globeLibsP = null;
+function loadGlobeLibs(){
+  if (window.Globe) return Promise.resolve();
+  if (globeLibsP) return globeLibsP;
+  globeLibsP = new Promise((resolve, reject)=>{
+    const s1 = document.createElement('script'); s1.src = 'static/three.min.js';
+    s1.onload = ()=>{
+      const s2 = document.createElement('script'); s2.src = 'static/globe.gl.min.js';
+      s2.onload = resolve; s2.onerror = reject;
+      document.head.appendChild(s2);
+    };
+    s1.onerror = reject;
+    document.head.appendChild(s1);
+  });
+  return globeLibsP;
+}
+async function toggleView(){
+  const chip = document.querySelector('[data-view]');
+  if (VIEW === 'flat' && !window.Globe){
+    if (chip) chip.textContent = '🌍 加载中…';
+    try{ await loadGlobeLibs(); }
+    catch(e){ if (chip) chip.textContent = '🌍 地球'; alert('地球组件加载失败，请检查网络后重试'); return; }
+    if (chip) chip.textContent = '🌍 地球';
+  }
   VIEW = VIEW==='flat' ? 'globe' : 'flat';
   document.getElementById('map').style.display   = VIEW==='flat'  ? 'block' : 'none';
   document.getElementById('globe').style.display = VIEW==='globe' ? 'block' : 'none';
