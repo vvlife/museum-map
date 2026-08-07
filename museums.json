@@ -21,7 +21,8 @@
       "status": "verified",
       "notes": "官方线上参观入口，含多个展厅 360° 游览",
       "category": "general",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://api-www.louvre.fr/sites/default/files/2021-03/petite-galerie-5-figure-d-artiste-2.jpg"
     },
     {
       "id": "met",
@@ -36,7 +37,8 @@
       "status": "anti_bot",
       "notes": "官方 360° 视频项目，覆盖六大标志性空间",
       "category": "general",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.metmuseum.org/art/collection/met-360-project"
     },
     {
       "id": "nmnh",
@@ -51,7 +53,8 @@
       "status": "verified",
       "notes": "官方虚拟游览系统，展厅级漫游，质量极高",
       "category": "nature",
-      "frameable": false
+      "frameable": false,
+      "thumb": "https://image.thum.io/get/width/200/https://naturalhistory2.si.edu/vt3/NMNH/"
     },
     {
       "id": "vatican",
@@ -66,7 +69,8 @@
       "status": "verified",
       "notes": "官方 WebVR，西斯廷礼拜堂超高精度全景",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.vatican.va/various/cappelle/sistina_vr/index.html"
     },
     {
       "id": "uffizi",
@@ -81,7 +85,8 @@
       "status": "verified",
       "notes": "官方虚拟展览系列",
       "category": "art",
-      "frameable": true
+      "frameable": true,
+      "thumb": "https://www.datocms-assets.com/103094/1688381775-og-placeholder.jpg?auto=format&amp;fit=max&amp;w=1200"
     },
     {
       "id": "gugong",
@@ -96,7 +101,8 @@
       "status": "verified",
       "notes": "官方全景系统，国内直连，覆盖主要宫殿院落",
       "category": "heritage",
-      "frameable": false
+      "frameable": false,
+      "thumb": "https://image.thum.io/get/width/200/https://pano.dpm.org.cn/"
     },
     {
       "id": "dunhuang",
@@ -111,7 +117,8 @@
       "status": "verified",
       "notes": "30+ 洞窟高精度壁画全景，国内直连",
       "category": "heritage",
-      "frameable": false
+      "frameable": false,
+      "thumb": "https://image.thum.io/get/width/200/https://www.e-dunhuang.com/cave/10.0001/0001.0001.0061"
     },
     {
       "id": "chnmuseum",
@@ -126,7 +133,8 @@
       "status": "verified",
       "notes": "官网入口，站内『数字展厅』含多个虚拟展览 [VR直达]",
       "category": "general",
-      "frameable": true
+      "frameable": true,
+      "thumb": "https://image.thum.io/get/width/200/https://m.chnmuseum.cn/portals/0/web/vr/"
     },
     {
       "id": "annefrank",
@@ -141,7 +149,8 @@
       "status": "verified",
       "notes": "提供 Anne Frank House VR 应用及在线虚拟 [VR直达]",
       "category": "history",
-      "frameable": true
+      "frameable": true,
+      "thumb": "https://EyeSpy360---Anne-Frank-House.vr-360-tour.com/thumbnails/57E7AC9C-698E-11F1-8806-F63087BC0852.jpg?companyID=8270"
     },
     {
       "id": "rijksmuseum",
@@ -156,7 +165,8 @@
       "status": "needs_proxy",
       "notes": "官网已验证可打开；可缩放查看《夜巡》等镇馆之作",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/rijksmuseum"
     },
     {
       "id": "pergamon",
@@ -171,7 +181,8 @@
       "status": "needs_proxy",
       "notes": "柏林国立博物馆群官网；注意佩加蒙主馆 2023 起闭馆翻新，线上资源尤显珍贵",
       "category": "heritage",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/pergamonmuseum"
     },
     {
       "id": "prado",
@@ -186,7 +197,8 @@
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），浏览器可打开",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.museodelprado.es/en/visit-the-museum/virtual-tour"
     },
     {
       "id": "orsay",
@@ -201,7 +213,8 @@
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），浏览器可打开",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.musee-orsay.fr/en/visit/virtual-tour"
     },
     {
       "id": "nhm_london",
@@ -216,7 +229,8 @@
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），含蓝鲸大厅等全景",
       "category": "nature",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.nhm.ac.uk/visit/virtual-museum.html"
     },
     {
       "id": "british_museum",
@@ -231,7 +245,8 @@
       "status": "needs_proxy",
       "notes": "世界最早公共博物馆；GAC 街景式漫游非常成熟",
       "category": "general",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/the-british-museum"
     },
     {
       "id": "vangogh",
@@ -246,7 +261,8 @@
       "status": "needs_proxy",
       "notes": "全球最大梵高收藏",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/van-gogh-museum"
     },
     {
       "id": "moma",
@@ -261,7 +277,8 @@
       "status": "needs_proxy",
       "notes": "",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/moma-the-museum-of-modern-art"
     },
     {
       "id": "guggenheim",
@@ -276,7 +293,8 @@
       "status": "needs_proxy",
       "notes": "赖特螺旋建筑本身即是看点",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/solomon-r-guggenheim-museum-and-foundation"
     },
     {
       "id": "masp",
@@ -291,7 +309,8 @@
       "status": "needs_proxy",
       "notes": "著名的『悬浮画架』陈列在 VR 中效果极佳",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/masp"
     },
     {
       "id": "tnm_tokyo",
@@ -306,7 +325,8 @@
       "status": "needs_proxy",
       "notes": "日本最古老国立博物馆",
       "category": "general",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/tokyo-national-museum"
     },
     {
       "id": "nmk_seoul",
@@ -321,7 +341,8 @@
       "status": "needs_proxy",
       "notes": "",
       "category": "general",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://artsandculture.google.com/partner/the-national-museum-of-korea"
     },
     {
       "id": "versailles",
@@ -336,7 +357,8 @@
       "status": "unverified",
       "notes": "子域名本次测试超时，待复核；备用：en.chateauversailles.fr 官网",
       "category": "heritage",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://virtualtour.chateauversailles.fr/"
     },
     {
       "id": "hermitage",
@@ -351,7 +373,8 @@
       "status": "unverified",
       "notes": "本次测试连接超时，待复核",
       "category": "art",
-      "frameable": null
+      "frameable": null,
+      "thumb": "https://image.thum.io/get/width/200/https://www.hermitagemuseum.org/wps/portal/hermitage/virtual_visit/virtual-tour/"
     },
     {
       "id": "acropolis",
@@ -366,7 +389,8 @@
       "status": "unverified",
       "notes": "旧虚拟游览链接 404，需从官网重新定位入口",
       "category": "heritage",
-      "frameable": false
+      "frameable": false,
+      "thumb": "https://image.thum.io/get/width/200/https://www.theacropolismuseum.gr/en"
     }
   ]
 }

@@ -22,6 +22,10 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
 .lrow{display:flex;gap:10px;align-items:center;background:var(--cream);border:1px solid var(--line);
   padding:10px 12px;margin-bottom:8px;box-shadow:2px 2px 0 rgba(122,95,51,.10)}
 .l-ico{flex:none;width:26px}.l-ico svg{width:26px;height:26px;color:#7a5f33}
+.l-thumb{flex:none;width:64px;height:64px;overflow:hidden;border:1px solid var(--line);
+  background:var(--cream);display:flex;align-items:center;justify-content:center}
+.l-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.l-thumb svg{width:26px;height:26px;color:#7a5f33}
 .l-main{flex:1;min-width:0}
 .l-name{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:.04em}
 .l-name .badge{font-size:11px;font-weight:400;margin-left:7px;letter-spacing:.05em}
@@ -61,6 +65,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
   border:1px solid var(--gold);padding:7px 10px;font-size:10.5px;color:var(--muted);
   box-shadow:2px 2px 0 rgba(122,95,51,.14);letter-spacing:.04em;line-height:1.9}
 #legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+#searchrow{display:none}  /* 搜索功能已隐藏 */
 #splash{position:fixed;inset:0;z-index:1500;display:flex;align-items:center;justify-content:center;
   background:var(--parchment);color:var(--bronze);font-size:15px;letter-spacing:.35em;
   transition:opacity .5s;pointer-events:none}
@@ -554,7 +559,7 @@ function renderList(){
   el.innerHTML = rows.map(m=>{
     const st = STATUS[m.status] || STATUS.unverified;
     return `<div class="lrow">
-      <div class="l-ico">${MK_ICON}</div>
+      <div class="l-thumb">${m.thumb ? `<img src="${m.thumb}" loading="lazy" onerror="this.remove()">` : MK_ICON}</div>
       <div class="l-main">
         <div class="l-name">${m.name_zh}<span class="badge" style="color:${st.c}">${st.label}</span></div>
         ${m.name_en ? `<div class="l-en">${m.name_en}</div>` : ''}
