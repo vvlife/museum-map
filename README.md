@@ -52,3 +52,8 @@ python3 server.py        # 或 sh start.sh
 - 翻译基于 MyMemory 免费接口（匿名配额有限），译文仅供辅助理解
 - Google Arts & Culture 系列链接在中国大陆需代理访问（数据中已标注）
 - 部分馆官网禁止 iframe 嵌入，应用内会优雅降级
+
+## 🌍 在线访问
+
+- **GitHub Pages（推荐）**：https://vvlife.github.io/museum-map/ — 58 馆静态版，大陆实测可达
+- 仓库：https://github.com/vvlife/museum-map
