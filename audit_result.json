@@ -1,0 +1,458 @@
+[
+ {
+  "id": "louvre",
+  "name": "卢浮宫博物馆",
+  "url": "https://www.louvre.fr/en/visites-en-ligne",
+  "verdict": "VR",
+  "why": "url=Y sig=virtual tour",
+  "file": "museums.json"
+ },
+ {
+  "id": "met",
+  "name": "大都会艺术博物馆",
+  "url": "https://www.metmuseum.org/art/collection/met-360-project",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (HTTP Error 429: Too Many Reque)",
+  "file": "museums.json"
+ },
+ {
+  "id": "nmnh",
+  "name": "史密森尼国家自然历史博物馆",
+  "url": "https://naturalhistory2.si.edu/vt3/NMNH/",
+  "verdict": "VR",
+  "why": "url=Y sig=None",
+  "file": "museums.json"
+ },
+ {
+  "id": "vatican",
+  "name": "梵蒂冈博物馆（西斯廷礼拜堂）",
+  "url": "https://www.vatican.va/various/cappelle/sistina_vr/index.html",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (<urlopen error timed out>)",
+  "file": "museums.json"
+ },
+ {
+  "id": "uffizi",
+  "name": "乌菲兹美术馆",
+  "url": "https://www.uffizi.it/mostre-virtuali",
+  "verdict": "VR",
+  "why": "url=Y sig=360°",
+  "file": "museums.json"
+ },
+ {
+  "id": "gugong",
+  "name": "故宫博物院",
+  "url": "https://pano.dpm.org.cn/",
+  "verdict": "VR",
+  "why": "url=Y sig=全景",
+  "file": "museums.json"
+ },
+ {
+  "id": "dunhuang",
+  "name": "敦煌莫高窟",
+  "url": "https://www.e-dunhuang.com/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "museums.json"
+ },
+ {
+  "id": "chnmuseum",
+  "name": "中国国家博物馆",
+  "url": "https://m.chnmuseum.cn/portals/0/web/vr/",
+  "verdict": "VR",
+  "why": "url=Y sig=None",
+  "file": "museums.json"
+ },
+ {
+  "id": "annefrank",
+  "name": "安妮之家",
+  "url": "https://eyespy360.vr-360-tour.com/e/jRQBkeIsydQ/e?dimensions=false&hide_nadir=true&hidelive=true&hidetitle=true&t_3d_model_dimensions=false",
+  "verdict": "VR",
+  "why": "url=Y sig=eyespy",
+  "file": "museums.json"
+ },
+ {
+  "id": "rijksmuseum",
+  "name": "荷兰国立博物馆",
+  "url": "https://www.rijksmuseum.nl/en/from-home/masterpieces-up-close",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 404: Not Found",
+  "file": "museums.json"
+ },
+ {
+  "id": "pergamon",
+  "name": "佩加蒙博物馆",
+  "url": "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/",
+  "verdict": "MAYBE",
+  "why": "无法访问: The read operation timed out",
+  "file": "museums.json"
+ },
+ {
+  "id": "prado",
+  "name": "普拉多博物馆",
+  "url": "https://www.museodelprado.es/en/visit-the-museum/virtual-tour",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (HTTP Error 403: Forbidden)",
+  "file": "museums.json"
+ },
+ {
+  "id": "orsay",
+  "name": "奥赛博物馆",
+  "url": "https://www.musee-orsay.fr/en/visit/virtual-tour",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (HTTP Error 403: Forbidden)",
+  "file": "museums.json"
+ },
+ {
+  "id": "nhm_london",
+  "name": "伦敦自然历史博物馆",
+  "url": "https://www.nhm.ac.uk/visit/virtual-museum.html",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (HTTP Error 403: Forbidden)",
+  "file": "museums.json"
+ },
+ {
+  "id": "british_museum",
+  "name": "大英博物馆",
+  "url": "https://artsandculture.google.com/partner/the-british-museum",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "vangogh",
+  "name": "梵高博物馆",
+  "url": "https://artsandculture.google.com/partner/van-gogh-museum",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "moma",
+  "name": "现代艺术博物馆",
+  "url": "https://artsandculture.google.com/partner/moma-the-museum-of-modern-art",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "guggenheim",
+  "name": "古根海姆博物馆",
+  "url": "https://artsandculture.google.com/partner/solomon-r-guggenheim-museum-and-foundation",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "masp",
+  "name": "圣保罗艺术博物馆",
+  "url": "https://artsandculture.google.com/partner/masp",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "tnm_tokyo",
+  "name": "东京国立博物馆",
+  "url": "https://artsandculture.google.com/partner/tokyo-national-museum",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "nmk_seoul",
+  "name": "韩国国立中央博物馆",
+  "url": "https://artsandculture.google.com/partner/the-national-museum-of-korea",
+  "verdict": "MAYBE",
+  "why": "无法访问: <urlopen error timed out>",
+  "file": "museums.json"
+ },
+ {
+  "id": "versailles",
+  "name": "凡尔赛宫",
+  "url": "https://virtualtour.chateauversailles.fr/",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (<urlopen error [Errno -2] Name)",
+  "file": "museums.json"
+ },
+ {
+  "id": "hermitage",
+  "name": "埃尔米塔日博物馆（冬宫）",
+  "url": "https://www.hermitagemuseum.org/wps/portal/hermitage/virtual_visit/virtual-tour/",
+  "verdict": "VR",
+  "why": "抓取失败但URL似VR (<urlopen error [SSL: CERTIFICA)",
+  "file": "museums.json"
+ },
+ {
+  "id": "acropolis",
+  "name": "雅典卫城博物馆",
+  "url": "https://www.theacropolismuseum.gr/en",
+  "verdict": "VR",
+  "why": "url=N sig=streetview",
+  "file": "museums.json"
+ },
+ {
+  "id": "custom-1786032895",
+  "name": "埃及博物馆",
+  "url": "https://gem.eg/",
+  "verdict": "VR",
+  "why": "url=N sig=virtual tour",
+  "file": "custom.json"
+ },
+ {
+  "id": "auto-1786034360-0",
+  "name": "芝加哥艺术博物馆",
+  "url": "https://www.artic.edu/my-museum-tour",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 403: Forbidden",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034370-1",
+  "name": "盖蒂中心",
+  "url": "https://www.getty.edu/visit/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034380-2",
+  "name": "美国国家美术馆",
+  "url": "https://www.nga.gov/visit/tours-and-guides/self-guided-tours.html",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 403: Forbidden",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034397-3",
+  "name": "泰特现代美术馆",
+  "url": "https://www.tate.org.uk/visit/tate-modern",
+  "verdict": "MAYBE",
+  "why": "无法访问: The read operation timed out",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034417-4",
+  "name": "维也纳艺术史博物馆",
+  "url": "https://www.khm.at/en",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034427-5",
+  "name": "橘园美术馆",
+  "url": "https://www.musee-orangerie.fr/en",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034464-6",
+  "name": "毕尔巴鄂古根海姆美术馆",
+  "url": "https://www.guggenheim-bilbao.eus/en",
+  "verdict": "VR",
+  "why": "url=N sig=virtual tour",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034483-7",
+  "name": "罗丹美术馆",
+  "url": "https://www.musee-rodin.fr/en",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034495-8",
+  "name": "莫瑞泰斯皇家美术馆",
+  "url": "https://www.mauritshuis.nl/en/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034577-10",
+  "name": "上海博物馆",
+  "url": "https://www.shanghaimuseum.net/frontend/pg/infomation/index",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 404: Not Found",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034584-11",
+  "name": "南京博物院",
+  "url": "https://www.njmuseum.com/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034592-12",
+  "name": "河南博物院",
+  "url": "https://www.chnmus.net/ch/exhibitions/virtual/index.html",
+  "verdict": "VR",
+  "why": "url=Y sig=虚拟展厅",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034599-13",
+  "name": "湖南博物院",
+  "url": "https://de.hnmuseum.com/collection/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034608-14",
+  "name": "苏州博物馆",
+  "url": "https://www.szmuseum.com/Exhibition/Other/Digitization",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034618-15",
+  "name": "香港故宫文化博物馆",
+  "url": "https://www.hkpm.org.hk/sc/visit/tour",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034649-16",
+  "name": "新加坡国家博物馆",
+  "url": "https://v360.nhb.gov.sg/nms/",
+  "verdict": "VR",
+  "why": "url=Y sig=None",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034656-17",
+  "name": "安大略皇家博物馆",
+  "url": "https://www.rom.on.ca/en",
+  "verdict": "MAYBE",
+  "why": "无法访问: The read operation timed out",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034690-18",
+  "name": "上海自然博物馆",
+  "url": "https://www.snhm.org.cn/cszl/virtualRoaming.htm",
+  "verdict": "VR",
+  "why": "url=Y sig=虚拟漫游",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034700-19",
+  "name": "伦敦科学博物馆",
+  "url": "https://www.sciencemuseum.org.uk/",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 405: Method Not Allowed",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034707-20",
+  "name": "德意志博物馆",
+  "url": "https://virtualtour.deutsches-museum.de/",
+  "verdict": "VR",
+  "why": "url=Y sig=None",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034722-21",
+  "name": "中国科学技术馆",
+  "url": "https://xnmy.cdstm.cn/xnmy/vr/65921/index.html",
+  "verdict": "VR",
+  "why": "url=Y sig=全景",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034734-22",
+  "name": "陕西历史博物馆",
+  "url": "https://www.sxhm.com/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034742-23",
+  "name": "秦始皇帝陵博物院",
+  "url": "https://bmy.com.cn/guide/scenic.html?tid=1",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034789-24",
+  "name": "广岛和平纪念资料馆",
+  "url": "https://hpmmuseum.jp/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034797-25",
+  "name": "成都博物馆",
+  "url": "https://www.cdmuseum.com/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786034805-26",
+  "name": "浙江省博物馆",
+  "url": "https://www.nbvr360.com/360/toulong/",
+  "verdict": "VR",
+  "why": "url=Y sig=None",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786041514890",
+  "name": "美国国家历史博物馆",
+  "url": "https://americanhistory.si.edu/",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 403: Forbidden",
+  "file": "auto.json"
+ },
+ {
+  "id": "auto-1786041525782",
+  "name": "卢浮宫阿布扎比",
+  "url": "https://www.louvreabudhabi.ae/",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 403: Forbidden",
+  "file": "auto.json"
+ },
+ {
+  "id": "curated-1786071150126",
+  "name": "菲尔德自然史博物馆",
+  "url": "https://www.fieldmuseum.org/exhibition/experience/vr-transporter",
+  "verdict": "VR",
+  "why": "url=Y sig=virtual tour",
+  "file": "auto.json"
+ },
+ {
+  "id": "curated-1786071150128",
+  "name": "维多利亚国家美术馆",
+  "url": "https://www.ngv.vic.gov.au/",
+  "verdict": "NOTVR",
+  "why": "首页/普通页面",
+  "file": "auto.json"
+ },
+ {
+  "id": "curated-1786071150129",
+  "name": "蒂森-博内米萨博物馆",
+  "url": "https://www.museothyssen.org/en",
+  "verdict": "VR",
+  "why": "url=N sig=virtual tour",
+  "file": "auto.json"
+ },
+ {
+  "id": "curated-1786071150130",
+  "name": "帝国战争博物馆",
+  "url": "https://www.iwm.org.uk/",
+  "verdict": "MAYBE",
+  "why": "无法访问: HTTP Error 403: Forbidden",
+  "file": "auto.json"
+ }
+]

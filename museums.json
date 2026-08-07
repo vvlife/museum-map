@@ -21,7 +21,7 @@
       "status": "verified",
       "notes": "官方线上参观入口，含多个展厅 360° 游览",
       "category": "general",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "met",
@@ -66,7 +66,7 @@
       "status": "verified",
       "notes": "官方 WebVR，西斯廷礼拜堂超高精度全景",
       "category": "art",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "uffizi",
@@ -106,8 +106,8 @@
       "country": "中国",
       "lat": 40.0417,
       "lon": 94.8094,
-      "vr_url": "https://www.e-dunhuang.com/",
-      "type": "数字敦煌 洞窟全景漫游",
+      "vr_url": "https://www.e-dunhuang.com/cave/10.0001/0001.0001.0061",
+      "type": "🥽 VR 全景",
       "status": "verified",
       "notes": "30+ 洞窟高精度壁画全景，国内直连",
       "category": "heritage",
@@ -126,7 +126,7 @@
       "status": "verified",
       "notes": "官网入口，站内『数字展厅』含多个虚拟展览 [VR直达]",
       "category": "general",
-      "frameable": null
+      "frameable": true
     },
     {
       "id": "annefrank",
@@ -151,9 +151,9 @@
       "country": "荷兰",
       "lat": 52.36,
       "lon": 4.8852,
-      "vr_url": "https://www.rijksmuseum.nl/en/from-home/masterpieces-up-close",
-      "type": "Masterpieces Up Close 超高清在线探索",
-      "status": "verified",
+      "vr_url": "https://artsandculture.google.com/partner/rijksmuseum",
+      "type": "🌐 街景漫游（需代理）",
+      "status": "needs_proxy",
       "notes": "官网已验证可打开；可缩放查看《夜巡》等镇馆之作",
       "category": "art",
       "frameable": null
@@ -166,9 +166,9 @@
       "country": "德国",
       "lat": 52.521,
       "lon": 13.3969,
-      "vr_url": "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/",
-      "type": "官网入口（360°资源部分托管于 Google Arts）",
-      "status": "verified",
+      "vr_url": "https://artsandculture.google.com/partner/pergamonmuseum",
+      "type": "🌐 街景漫游（需代理）",
+      "status": "needs_proxy",
       "notes": "柏林国立博物馆群官网；注意佩加蒙主馆 2023 起闭馆翻新，线上资源尤显珍贵",
       "category": "heritage",
       "frameable": null
@@ -216,7 +216,7 @@
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），含蓝鲸大厅等全景",
       "category": "nature",
-      "frameable": true
+      "frameable": null
     },
     {
       "id": "british_museum",
@@ -231,7 +231,7 @@
       "status": "needs_proxy",
       "notes": "世界最早公共博物馆；GAC 街景式漫游非常成熟",
       "category": "general",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "vangogh",
@@ -246,7 +246,7 @@
       "status": "needs_proxy",
       "notes": "全球最大梵高收藏",
       "category": "art",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "moma",
@@ -261,7 +261,7 @@
       "status": "needs_proxy",
       "notes": "",
       "category": "art",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "guggenheim",
@@ -291,7 +291,7 @@
       "status": "needs_proxy",
       "notes": "著名的『悬浮画架』陈列在 VR 中效果极佳",
       "category": "art",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "tnm_tokyo",
@@ -306,7 +306,7 @@
       "status": "needs_proxy",
       "notes": "日本最古老国立博物馆",
       "category": "general",
-      "frameable": false
+      "frameable": null
     },
     {
       "id": "nmk_seoul",

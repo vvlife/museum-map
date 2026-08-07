@@ -24,12 +24,12 @@
     "lat": 34.078,
     "lon": -118.4741,
     "category": "art",
-    "vr_url": "https://www.getty.edu/visit/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/the-j-paul-getty-museum",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": true
+    "frameable": null
   },
   {
     "id": "auto-1786034380-2",
@@ -40,9 +40,9 @@
     "lat": 38.8913,
     "lon": -77.0199,
     "category": "art",
-    "vr_url": "https://www.nga.gov/visit/tours-and-guides/self-guided-tours.html",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
+    "vr_url": "https://artsandculture.google.com/partner/national-gallery-of-art",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "中文讲解",
     "needs_review": true,
     "frameable": null
@@ -56,12 +56,12 @@
     "lat": 51.5076,
     "lon": -0.0994,
     "category": "art",
-    "vr_url": "https://www.tate.org.uk/visit/tate-modern",
-    "type": "🌐 自动发现",
-    "status": "auto",
+    "vr_url": "https://artsandculture.google.com/partner/tate-modern",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "Tate Modern | Tate [VR直达]",
     "needs_review": true,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034417-4",
@@ -72,12 +72,12 @@
     "lat": 48.2038,
     "lon": 16.3614,
     "category": "art",
-    "vr_url": "https://www.khm.at/en",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/kunsthistorisches-museum-vienna",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034427-5",
@@ -88,12 +88,12 @@
     "lat": 48.8638,
     "lon": 2.3222,
     "category": "art",
-    "vr_url": "https://www.musee-orangerie.fr/en",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/musee-de-lorangerie",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034464-6",
@@ -120,12 +120,12 @@
     "lat": 48.8556,
     "lon": 2.3158,
     "category": "art",
-    "vr_url": "https://www.musee-rodin.fr/en",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/musee-rodin",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034495-8",
@@ -136,12 +136,12 @@
     "lat": 52.0805,
     "lon": 4.3143,
     "category": "art",
-    "vr_url": "https://www.mauritshuis.nl/en/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/mauritshuis",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034577-10",
@@ -232,8 +232,8 @@
     "lat": 22.304,
     "lon": 114.1596,
     "category": "general",
-    "vr_url": "https://www.hkpm.org.hk/sc/visit/tour",
-    "type": "🌐 自动发现(官网嗅探)",
+    "vr_url": "https://www.hkpm.org.hk/sc",
+    "type": "🥽 VR 全景",
     "status": "auto",
     "notes": "导赏服务",
     "needs_review": true,
@@ -264,12 +264,12 @@
     "lat": 43.6677,
     "lon": -79.3948,
     "category": "general",
-    "vr_url": "https://www.rom.on.ca/en",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/royal-ontario-museum",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "auto-1786034690-18",
@@ -296,9 +296,9 @@
     "lat": 51.4978,
     "lon": -0.1745,
     "category": "science",
-    "vr_url": "https://www.sciencemuseum.org.uk/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/science-museum",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "notes": "人工复核官方入口",
     "needs_review": false,
     "frameable": null
@@ -360,8 +360,8 @@
     "lat": 34.3847,
     "lon": 109.2785,
     "category": "heritage",
-    "vr_url": "https://bmy.com.cn/guide/scenic.html?tid=1",
-    "type": "🌐 自动发现(官网嗅探)",
+    "vr_url": "https://bmy.com.cn/jingtai/ORIBMYCNCMS/bashu/pano/index.html",
+    "type": "🥽 VR 全景",
     "status": "auto",
     "notes": "查看导览\r\n全景图",
     "needs_review": true,
@@ -377,7 +377,7 @@
     "lon": 132.4522,
     "category": "history",
     "vr_url": "https://hpmmuseum.jp/",
-    "type": "🏛 官方网站",
+    "type": "🥽 VR 全景",
     "status": "verified",
     "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
@@ -393,7 +393,7 @@
     "lon": 104.0633,
     "category": "general",
     "vr_url": "https://www.cdmuseum.com/",
-    "type": "🏛 官方网站",
+    "type": "🥽 VR 全景",
     "status": "verified",
     "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
@@ -423,9 +423,9 @@
     "country": "",
     "lat": 38.8913,
     "lon": -77.03,
-    "vr_url": "https://americanhistory.si.edu/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/national-museum-of-american-history",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "category": "history",
     "notes": "人工复核官方入口",
     "needs_review": false,
@@ -439,13 +439,13 @@
     "country": "",
     "lat": 24.5336,
     "lon": 54.3989,
-    "vr_url": "https://www.louvreabudhabi.ae/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/louvre-abu-dhabi",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "category": "art",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": true
+    "frameable": null
   },
   {
     "id": "curated-1786071150126",
@@ -471,13 +471,13 @@
     "country": "",
     "lat": -37.8226,
     "lon": 144.9689,
-    "vr_url": "https://www.ngv.vic.gov.au/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/national-gallery-of-victoria",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "category": "art",
     "notes": "人工补录官方入口 [VR直达]",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   },
   {
     "id": "curated-1786071150129",
@@ -503,12 +503,12 @@
     "country": "",
     "lat": 51.4958,
     "lon": -0.1087,
-    "vr_url": "https://www.iwm.org.uk/",
-    "type": "🏛 官方网站",
-    "status": "verified",
+    "vr_url": "https://artsandculture.google.com/partner/imperial-war-museums",
+    "type": "🌐 街景漫游（需代理）",
+    "status": "needs_proxy",
     "category": "history",
     "notes": "人工补录官方入口",
     "needs_review": false,
-    "frameable": false
+    "frameable": null
   }
 ]

@@ -1,0 +1,66 @@
+审计 57 馆...
+
+=== ✅ VR页面 24 ===
+  卢浮宫博物馆 | url=Y sig=virtual tour
+  大都会艺术博物馆 | 抓取失败但URL似VR (HTTP Error 429: Too Many Reque)
+  史密森尼国家自然历史博物馆 | url=Y sig=None
+  梵蒂冈博物馆（西斯廷礼拜堂） | 抓取失败但URL似VR (<urlopen error timed out>)
+  乌菲兹美术馆 | url=Y sig=360°
+  故宫博物院 | url=Y sig=全景
+  中国国家博物馆 | url=Y sig=None
+  安妮之家 | url=Y sig=eyespy
+  普拉多博物馆 | 抓取失败但URL似VR (HTTP Error 403: Forbidden)
+  奥赛博物馆 | 抓取失败但URL似VR (HTTP Error 403: Forbidden)
+  伦敦自然历史博物馆 | 抓取失败但URL似VR (HTTP Error 403: Forbidden)
+  凡尔赛宫 | 抓取失败但URL似VR (<urlopen error [Errno -2] Name)
+  埃尔米塔日博物馆（冬宫） | 抓取失败但URL似VR (<urlopen error [SSL: CERTIFICA)
+  雅典卫城博物馆 | url=N sig=streetview
+  埃及博物馆 | url=N sig=virtual tour
+  毕尔巴鄂古根海姆美术馆 | url=N sig=virtual tour
+  河南博物院 | url=Y sig=虚拟展厅
+  新加坡国家博物馆 | url=Y sig=None
+  上海自然博物馆 | url=Y sig=虚拟漫游
+  德意志博物馆 | url=Y sig=None
+  中国科学技术馆 | url=Y sig=全景
+  浙江省博物馆 | url=Y sig=None
+  菲尔德自然史博物馆 | url=Y sig=virtual tour
+  蒂森-博内米萨博物馆 | url=N sig=virtual tour
+
+=== ❌ 非VR页面 15（待修） ===
+  敦煌莫高窟 | https://www.e-dunhuang.com/
+  盖蒂中心 | https://www.getty.edu/visit/
+  维也纳艺术史博物馆 | https://www.khm.at/en
+  橘园美术馆 | https://www.musee-orangerie.fr/en
+  罗丹美术馆 | https://www.musee-rodin.fr/en
+  莫瑞泰斯皇家美术馆 | https://www.mauritshuis.nl/en/
+  南京博物院 | https://www.njmuseum.com/
+  湖南博物院 | https://de.hnmuseum.com/collection/
+  苏州博物馆 | https://www.szmuseum.com/Exhibition/Other/Digitization
+  香港故宫文化博物馆 | https://www.hkpm.org.hk/sc/visit/tour
+  陕西历史博物馆 | https://www.sxhm.com/
+  秦始皇帝陵博物院 | https://bmy.com.cn/guide/scenic.html?tid=1
+  广岛和平纪念资料馆 | https://hpmmuseum.jp/
+  成都博物馆 | https://www.cdmuseum.com/
+  维多利亚国家美术馆 | https://www.ngv.vic.gov.au/
+
+=== ⚠️ 无法访问 18 ===
+  荷兰国立博物馆 | 无法访问: HTTP Error 404: Not Found | https://www.rijksmuseum.nl/en/from-home/masterpiec
+  佩加蒙博物馆 | 无法访问: The read operation timed out | https://www.smb.museum/en/museums-institutions/per
+  大英博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/the-brit
+  梵高博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/van-gogh
+  现代艺术博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/moma-the
+  古根海姆博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/solomon-
+  圣保罗艺术博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/masp
+  东京国立博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/tokyo-na
+  韩国国立中央博物馆 | 无法访问: <urlopen error timed out> | https://artsandculture.google.com/partner/the-nati
+  芝加哥艺术博物馆 | 无法访问: HTTP Error 403: Forbidden | https://www.artic.edu/my-museum-tour
+  美国国家美术馆 | 无法访问: HTTP Error 403: Forbidden | https://www.nga.gov/visit/tours-and-guides/self-gu
+  泰特现代美术馆 | 无法访问: The read operation timed out | https://www.tate.org.uk/visit/tate-modern
+  上海博物馆 | 无法访问: HTTP Error 404: Not Found | https://www.shanghaimuseum.net/frontend/pg/infomat
+  安大略皇家博物馆 | 无法访问: The read operation timed out | https://www.rom.on.ca/en
+  伦敦科学博物馆 | 无法访问: HTTP Error 405: Method Not Allowed | https://www.sciencemuseum.org.uk/
+  美国国家历史博物馆 | 无法访问: HTTP Error 403: Forbidden | https://americanhistory.si.edu/
+  卢浮宫阿布扎比 | 无法访问: HTTP Error 403: Forbidden | https://www.louvreabudhabi.ae/
+  帝国战争博物馆 | 无法访问: HTTP Error 403: Forbidden | https://www.iwm.org.uk/
+
+已存 audit_result.json

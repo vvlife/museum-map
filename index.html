@@ -530,7 +530,9 @@ document.addEventListener('click', e=>{
   else if(act === 'view'){
     e.stopPropagation();
     const m = MUSEUMS.find(x=>x.id===id);
-    if(m) openViewer(m.name_zh, m.vr_url, m.frameable);
+    if(!m) return;
+    if(m.status === 'needs_proxy'){ location.href = m.vr_url; return; }  // 需代理馆：直接跳转
+    openViewer(m.name_zh, m.vr_url, m.frameable);
   }
   else if(act === 'goto'){
     e.stopPropagation();

@@ -12,6 +12,6 @@
     "status": "custom",
     "notes": "Grand Egyptian Museum 官方",
     "category": "history",
-    "frameable": null
+    "frameable": false
   }
 ]
