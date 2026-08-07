@@ -8,10 +8,10 @@
     "lat": 41.8796,
     "lon": -87.6237,
     "category": "art",
-    "vr_url": "https://www.artic.edu/visit",
+    "vr_url": "https://www.artic.edu/my-museum-tour",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": null
   },
@@ -59,7 +59,7 @@
     "vr_url": "https://www.tate.org.uk/visit/tate-modern",
     "type": "🌐 自动发现",
     "status": "auto",
-    "notes": "Tate Modern | Tate",
+    "notes": "Tate Modern | Tate [VR直达]",
     "needs_review": true,
     "frameable": false
   },
@@ -72,10 +72,10 @@
     "lat": 48.2038,
     "lon": 16.3614,
     "category": "art",
-    "vr_url": "https://www.khm.at/en/",
+    "vr_url": "https://www.khm.at/en",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -91,7 +91,7 @@
     "vr_url": "https://www.musee-orangerie.fr/en",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -107,7 +107,7 @@
     "vr_url": "https://www.guggenheim-bilbao.eus/en",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": true
   },
@@ -139,7 +139,7 @@
     "vr_url": "https://www.mauritshuis.nl/en/",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -184,10 +184,10 @@
     "lat": 34.7897,
     "lon": 113.6675,
     "category": "general",
-    "vr_url": "https://www.chnmus.net/ch/exhibitions/online/index.html",
+    "vr_url": "https://www.chnmus.net/ch/exhibitions/virtual/index.html",
     "type": "🌐 自动发现(官网嗅探)",
     "status": "auto",
-    "notes": "线上展览",
+    "notes": "线上展览 [VR直达]",
     "needs_review": true,
     "frameable": false
   },
@@ -312,10 +312,10 @@
     "lat": 48.1298,
     "lon": 11.5834,
     "category": "science",
-    "vr_url": "https://www.deutsches-museum.de/en",
+    "vr_url": "https://virtualtour.deutsches-museum.de/",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": true
   },
@@ -328,12 +328,12 @@
     "lat": 40.0042,
     "lon": 116.3886,
     "category": "science",
-    "vr_url": "https://www.cstm.org.cn/",
+    "vr_url": "https://xnmy.cdstm.cn/xnmy/vr/65921/index.html",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
-    "frameable": false
+    "frameable": true
   },
   {
     "id": "auto-1786034734-22",
@@ -379,7 +379,7 @@
     "vr_url": "https://hpmmuseum.jp/",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -395,7 +395,7 @@
     "vr_url": "https://www.cdmuseum.com/",
     "type": "🏛 官方网站",
     "status": "verified",
-    "notes": "人工复核官方入口",
+    "notes": "人工复核官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -413,22 +413,6 @@
     "status": "verified",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": null
-  },
-  {
-    "id": "auto-1786041506611",
-    "name_zh": "中国国家博物馆",
-    "name_en": "National Museum of China",
-    "city": "",
-    "country": "",
-    "lat": 39.9051,
-    "lon": 116.4015,
-    "vr_url": "https://m.chnmuseum.cn/portals/0/web/vr/",
-    "type": "🌐 补收录",
-    "status": "auto",
-    "category": "general",
-    "notes": "中国国家博物馆数字展厅 - chnmuseum.cn",
-    "needs_review": true,
     "frameable": null
   },
   {
@@ -461,7 +445,7 @@
     "category": "art",
     "notes": "人工复核官方入口",
     "needs_review": false,
-    "frameable": null
+    "frameable": true
   },
   {
     "id": "curated-1786071150126",
@@ -471,11 +455,11 @@
     "country": "",
     "lat": 41.8663,
     "lon": -87.617,
-    "vr_url": "https://www.fieldmuseum.org/",
+    "vr_url": "https://www.fieldmuseum.org/exhibition/experience/vr-transporter",
     "type": "🏛 官方网站",
     "status": "verified",
     "category": "nature",
-    "notes": "人工补录官方入口",
+    "notes": "人工补录官方入口 [VR直达]",
     "needs_review": false,
     "frameable": true
   },
@@ -491,7 +475,7 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "category": "art",
-    "notes": "人工补录官方入口",
+    "notes": "人工补录官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -507,7 +491,7 @@
     "type": "🏛 官方网站",
     "status": "verified",
     "category": "art",
-    "notes": "人工补录官方入口",
+    "notes": "人工补录官方入口 [VR直达]",
     "needs_review": false,
     "frameable": false
   },
@@ -525,6 +509,6 @@
     "category": "history",
     "notes": "人工补录官方入口",
     "needs_review": false,
-    "frameable": null
+    "frameable": false
   }
 ]

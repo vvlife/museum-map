@@ -373,6 +373,13 @@ const viewer = document.getElementById('viewer'), vframe = document.getElementBy
       vblocked = document.getElementById('vblocked');
 let V = null; /* 当前展厅: {name, url, translated} */
 let vwd = null; /* iframe 加载看门狗 */
+const viewportMeta = document.querySelector('meta[name="viewport"]');
+function setPageZoom(on){
+  /* 展厅打开时允许双指缩放（内嵌 VR 画面需要），关闭后锁回 */
+  if (viewportMeta) viewportMeta.content = on
+    ? 'width=device-width, initial-scale=1.0, maximum-scale=6.0, user-scalable=yes'
+    : 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+}
 
 vframe.addEventListener('load', ()=>{
   if (vframe.src && !vframe.src.endsWith('about:blank')){
@@ -408,23 +415,26 @@ function openViewer(name, url, fb){
 function showFrame(url){
   vblocked.style.display = 'none';
   vloading.style.display = 'flex';
-  vframe.style.display = 'block'; vframe.src = url;
+  vframe.style.display = 'block';
+  vframe.src = url;
+  setPageZoom(true);
   armWatchdog(url);
 }
 function showBlocked(reason){
   vloading.style.display = 'none';
   vblocked.innerHTML = `<div class="vbcard">
-      <h3>此馆谢绝内嵌参观</h3>
-      <p>对方网站设置了防嵌入保护${reason ? '（'+reason+'）' : ''}，无法在此框内直接呈现。</p>
-      <button class="vb-go" data-vact="translated">📜 译 文 阅 览（代理翻译）</button>
-      <button class="vb-go" data-vact="embed">🖼 仍要尝试内嵌</button>
-      <button class="vb-line" data-vact="goto">直 接 前 往 本 站 ↗</button>
-      <p class="vb-note">译 文 阅 览 经本站代理抓取并翻译文字，<br>适合阅读展厅介绍；全景/VR画面请前往本站。</p>
+      <h3>${V ? V.name : ''} · VR 展厅</h3>
+      <p>此馆网站不支持馆内直接参观${reason ? '（'+reason+'）' : ''}，点击下方按钮直达其 VR 展厅。</p>
+      <button class="vb-go" data-vact="goto">🚪 前 往 VR 展 厅</button>
+      ${HAS_API ? '<button class="vb-line" data-vact="translated">📜 译 文 阅 览（代理翻译）</button>' : ''}
+      <button class="vb-line" data-vact="embed">🖼 仍要尝试内嵌</button>
     </div>`;
   vblocked.style.display = 'flex';
 }
 function closeViewer(){
   viewer.style.display = 'none'; vframe.src = 'about:blank'; V = null;
+  clearTimeout(vwd);
+  setPageZoom(false);
 }
 function setViewerMode(kind){
   if(!V) return;

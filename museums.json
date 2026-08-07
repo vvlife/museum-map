@@ -66,7 +66,7 @@
       "status": "verified",
       "notes": "官方 WebVR，西斯廷礼拜堂超高精度全景",
       "category": "art",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "uffizi",
@@ -121,12 +121,12 @@
       "country": "中国",
       "lat": 39.9051,
       "lon": 116.4015,
-      "vr_url": "https://www.chnmuseum.cn/",
+      "vr_url": "https://m.chnmuseum.cn/portals/0/web/vr/",
       "type": "数字展厅（虚拟展览）",
       "status": "verified",
-      "notes": "官网入口，站内『数字展厅』含多个虚拟展览",
+      "notes": "官网入口，站内『数字展厅』含多个虚拟展览 [VR直达]",
       "category": "general",
-      "frameable": true
+      "frameable": null
     },
     {
       "id": "annefrank",
@@ -136,12 +136,12 @@
       "country": "荷兰",
       "lat": 52.3752,
       "lon": 4.884,
-      "vr_url": "https://www.annefrank.org/en/museum/web-and-digital/",
+      "vr_url": "https://eyespy360.vr-360-tour.com/e/jRQBkeIsydQ/e?dimensions=false&hide_nadir=true&hidelive=true&hidetitle=true&t_3d_model_dimensions=false",
       "type": "官方VR应用/虚拟参观",
       "status": "verified",
-      "notes": "提供 Anne Frank House VR 应用及在线虚拟参观",
+      "notes": "提供 Anne Frank House VR 应用及在线虚拟 [VR直达]",
       "category": "history",
-      "frameable": false
+      "frameable": true
     },
     {
       "id": "rijksmuseum",
@@ -216,7 +216,7 @@
       "status": "anti_bot",
       "notes": "页面存在（curl 403 反爬），含蓝鲸大厅等全景",
       "category": "nature",
-      "frameable": null
+      "frameable": true
     },
     {
       "id": "british_museum",
@@ -231,7 +231,7 @@
       "status": "needs_proxy",
       "notes": "世界最早公共博物馆；GAC 街景式漫游非常成熟",
       "category": "general",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "vangogh",
@@ -246,7 +246,7 @@
       "status": "needs_proxy",
       "notes": "全球最大梵高收藏",
       "category": "art",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "moma",
@@ -261,7 +261,7 @@
       "status": "needs_proxy",
       "notes": "",
       "category": "art",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "guggenheim",
@@ -291,7 +291,7 @@
       "status": "needs_proxy",
       "notes": "著名的『悬浮画架』陈列在 VR 中效果极佳",
       "category": "art",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "tnm_tokyo",
@@ -306,7 +306,7 @@
       "status": "needs_proxy",
       "notes": "日本最古老国立博物馆",
       "category": "general",
-      "frameable": null
+      "frameable": false
     },
     {
       "id": "nmk_seoul",
