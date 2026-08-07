@@ -5,3 +5,4 @@ expand.log
 nohup.out
 translate_cache.json
 cloudflared
+docs/CNAME

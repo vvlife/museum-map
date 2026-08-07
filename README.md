@@ -55,5 +55,6 @@ python3 server.py        # 或 sh start.sh
 
 ## 🌍 在线访问
 
-- **GitHub Pages（推荐）**：https://vvlife.github.io/museum-map/ — 58 馆静态版，大陆实测可达
+- **国内直连（推荐）**：https://musea-orbis.surge.sh/ — surge.sh 托管，57 馆静态版
+- GitHub Pages：https://vvlife.github.io/museum-map/ （部分地区可能不稳定）
 - 仓库：https://github.com/vvlife/museum-map
