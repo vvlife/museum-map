@@ -2,7 +2,7 @@ import json, os, shutil, re
 BASE = os.path.dirname(os.path.abspath(__file__))
 docs = os.path.join(BASE, "docs")
 shutil.rmtree(docs, ignore_errors=True)
-os.makedirs(os.path.join(docs, "static"))
+os.makedirs(os.path.join(docs, "static"), exist_ok=True)
 for f in ["leaflet.js", "leaflet.css", "three.min.js", "globe.gl.min.js", "countries.geo.json"]:
     shutil.copy2(os.path.join(BASE, "static", f), os.path.join(docs, "static", f))
 museums = json.load(open(os.path.join(BASE, "museums.json"), encoding="utf-8"))["museums"]

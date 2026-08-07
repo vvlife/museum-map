@@ -8,11 +8,11 @@
     "lat": 41.8796,
     "lon": -87.6237,
     "category": "art",
-    "vr_url": "https://www.artic.edu/visit/explore-on-your-own/mobile-app-audio-tours",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "Art Institute of Chicago",
-    "needs_review": true
+    "vr_url": "https://www.artic.edu/visit",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034370-1",
@@ -23,11 +23,11 @@
     "lat": 34.078,
     "lon": -118.4741,
     "category": "art",
-    "vr_url": "https://visitcalifornia.com.cn/experience/family-tours/theme-parks-tour",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "家庭亲子\n\n\n\n加州主题乐园之旅\n\n玩耍时间 乐趣无限",
-    "needs_review": true
+    "vr_url": "https://www.getty.edu/visit/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034380-2",
@@ -68,11 +68,11 @@
     "lat": 48.2038,
     "lon": 16.3614,
     "category": "art",
-    "vr_url": "https://www.getyourguide.com/zh-cn/explorer/vienna-ttd7/best-views-in-vienna/",
-    "type": "🌐 自动发现",
-    "status": "auto",
-    "notes": "维也纳8大景点及其位置 - GetYourGuide",
-    "needs_review": true
+    "vr_url": "https://www.khm.at/en/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034427-5",
@@ -83,11 +83,11 @@
     "lat": 48.8638,
     "lon": 2.3222,
     "category": "art",
-    "vr_url": "https://www.museeorangerie.paris/zh/paris-orangerie/art/orangerie-monet-nympheas-immersive-rooms",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "最著名Monet’s Nymphéas: Inside the Oval RoomsA deep, sensory walkthrough of the Wat",
-    "needs_review": true
+    "vr_url": "https://www.musee-orangerie.fr/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034464-6",
@@ -98,11 +98,11 @@
     "lat": 43.2687,
     "lon": -2.934,
     "category": "art",
-    "vr_url": "http://weibo.com/spaintourism?topnav=1&wvr=6&topsug=1&is_hot=1",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "",
-    "needs_review": true
+    "vr_url": "https://www.guggenheim-bilbao.eus/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034483-7",
@@ -113,11 +113,11 @@
     "lat": 48.8556,
     "lon": 2.3158,
     "category": "art",
-    "vr_url": "https://www.musee-rodin.fr/en/plan-your-visit/travel-trade-professionals-and-company-committees",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "Professionnels du tourisme",
-    "needs_review": true
+    "vr_url": "https://www.musee-rodin.fr/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034495-8",
@@ -128,26 +128,11 @@
     "lat": 52.0805,
     "lon": 4.3143,
     "category": "art",
-    "vr_url": "https://www.mauritshuis.nl/en/our-collection/new-and-on-tour/collection-on-tour#girl-with-a-pearl",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "更多信息",
-    "needs_review": true
-  },
-  {
-    "id": "auto-1786034569-9",
-    "name_zh": "卢浮宫阿布扎比分馆",
-    "name_en": "Louvre Abu Dhabi",
-    "city": "",
-    "country": "",
-    "lat": 24.5336,
-    "lon": 54.3989,
-    "category": "art",
-    "vr_url": "https://boutique.louvre.fr",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "线上商店",
-    "needs_review": true
+    "vr_url": "https://www.mauritshuis.nl/en/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034577-10",
@@ -263,11 +248,11 @@
     "lat": 43.6677,
     "lon": -79.3948,
     "category": "general",
-    "vr_url": "https://jingyan.baidu.com/album/48206aea14ce13606ad6b3d7.html?picindex=1",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "https://jingyan.baidu.com/album/48206aea14ce13606ad6b3d7.html?picindex=1",
-    "needs_review": true
+    "vr_url": "https://www.rom.on.ca/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034690-18",
@@ -293,11 +278,11 @@
     "lat": 51.4978,
     "lon": -0.1745,
     "category": "science",
-    "vr_url": "https://zaiyouji.com/london/",
-    "type": "🌐 自动发现",
-    "status": "auto",
-    "notes": "伦敦20大必去景点攻略 – 在游记",
-    "needs_review": true
+    "vr_url": "https://www.sciencemuseum.org.uk/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034707-20",
@@ -308,11 +293,11 @@
     "lat": 48.1298,
     "lon": 11.5834,
     "category": "science",
-    "vr_url": "https://m.acfun.cn/v/?ac=40350993",
-    "type": "🌐 自动发现",
-    "status": "auto",
-    "notes": "【高清解禁】会员制餐厅（1080p 蓝光）",
-    "needs_review": true
+    "vr_url": "https://www.deutsches-museum.de/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034722-21",
@@ -323,11 +308,11 @@
     "lat": 40.0042,
     "lon": 116.3886,
     "category": "science",
-    "vr_url": "https://xnmy.cdstm.cn/xnmy/vr/65921/index.html",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "虚拟漫游",
-    "needs_review": true
+    "vr_url": "https://www.cstm.org.cn/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034734-22",
@@ -338,11 +323,11 @@
     "lat": 34.2226,
     "lon": 108.9533,
     "category": "history",
-    "vr_url": "http://m.xa.bendibao.com/tour/",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "旅游",
-    "needs_review": true
+    "vr_url": "https://www.sxhm.com/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034742-23",
@@ -368,11 +353,11 @@
     "lat": 34.3928,
     "lon": 132.4522,
     "category": "history",
-    "vr_url": "https://att-japan.net/zh_cn/chiba-city-tourism-model-course/",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "https://att-japan.net/zh_cn/chiba-city-tourism-model-course/",
-    "needs_review": true
+    "vr_url": "https://hpmmuseum.jp/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034797-25",
@@ -383,11 +368,11 @@
     "lat": 30.66,
     "lon": 104.0633,
     "category": "general",
-    "vr_url": "https://cdmuseum.com/bixuan/202608/4457.html",
-    "type": "🌐 自动发现(官网嗅探)",
-    "status": "auto",
-    "notes": "03\n                                        08 2026\n                             ",
-    "needs_review": true
+    "vr_url": "https://www.cdmuseum.com/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
   },
   {
     "id": "auto-1786034805-26",
@@ -398,10 +383,115 @@
     "lat": 30.25,
     "lon": 120.15,
     "category": "general",
-    "vr_url": "https://hz.bendibao.com/tour/",
-    "type": "🌐 自动发现(官网嗅探)",
+    "vr_url": "https://www.zhejiangmuseum.com/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "notes": "人工复核官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "auto-1786041506611",
+    "name_zh": "中国国家博物馆",
+    "name_en": "National Museum of China",
+    "city": "",
+    "country": "",
+    "lat": 39.9051,
+    "lon": 116.4015,
+    "vr_url": "https://m.chnmuseum.cn/portals/0/web/vr/",
+    "type": "🌐 补收录",
     "status": "auto",
-    "notes": "旅游",
+    "category": "general",
+    "notes": "中国国家博物馆数字展厅 - chnmuseum.cn",
     "needs_review": true
+  },
+  {
+    "id": "auto-1786041514890",
+    "name_zh": "美国国家历史博物馆",
+    "name_en": "Smithsonian National Museum of American History",
+    "city": "",
+    "country": "",
+    "lat": 38.8913,
+    "lon": -77.03,
+    "vr_url": "https://americanhistory.si.edu/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "history",
+    "notes": "人工复核官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "auto-1786041525782",
+    "name_zh": "卢浮宫阿布扎比",
+    "name_en": "Louvre Abu Dhabi",
+    "city": "",
+    "country": "",
+    "lat": 24.5336,
+    "lon": 54.3989,
+    "vr_url": "https://www.louvreabudhabi.ae/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "art",
+    "notes": "人工复核官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "curated-1786071150126",
+    "name_zh": "菲尔德自然史博物馆",
+    "name_en": "Field Museum",
+    "city": "芝加哥",
+    "country": "",
+    "lat": 41.8663,
+    "lon": -87.617,
+    "vr_url": "https://www.fieldmuseum.org/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "nature",
+    "notes": "人工补录官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "curated-1786071150128",
+    "name_zh": "维多利亚国家美术馆",
+    "name_en": "National Gallery of Victoria",
+    "city": "墨尔本",
+    "country": "",
+    "lat": -37.8226,
+    "lon": 144.9689,
+    "vr_url": "https://www.ngv.vic.gov.au/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "art",
+    "notes": "人工补录官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "curated-1786071150129",
+    "name_zh": "蒂森-博内米萨博物馆",
+    "name_en": "Thyssen-Bornemisza Museum",
+    "city": "马德里",
+    "country": "",
+    "lat": 40.4161,
+    "lon": -3.695,
+    "vr_url": "https://www.museothyssen.org/en",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "art",
+    "notes": "人工补录官方入口",
+    "needs_review": false
+  },
+  {
+    "id": "curated-1786071150130",
+    "name_zh": "帝国战争博物馆",
+    "name_en": "Imperial War Museum",
+    "city": "伦敦",
+    "country": "",
+    "lat": 51.4958,
+    "lon": -0.1087,
+    "vr_url": "https://www.iwm.org.uk/",
+    "type": "🏛 官方网站",
+    "status": "verified",
+    "category": "history",
+    "notes": "人工补录官方入口",
+    "needs_review": false
   }
 ]
