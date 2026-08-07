@@ -49,6 +49,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
   border:1px solid var(--gold);padding:7px 10px;font-size:10.5px;color:var(--muted);
   box-shadow:2px 2px 0 rgba(122,95,51,.14);letter-spacing:.04em;line-height:1.9}
 #legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+#splash{position:fixed;inset:0;z-index:1500;display:flex;align-items:center;justify-content:center;
+  background:var(--parchment);color:var(--bronze);font-size:15px;letter-spacing:.35em;
+  transition:opacity .5s;pointer-events:none}
 /* 博物馆图标标记 */
 .mk-wrap{background:none !important;border:none !important}
 .mk{width:22px;height:22px;position:relative}
@@ -89,6 +92,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--parchment);
 </head>
 <body>
 <div id="map"></div>
+<div id="splash">馆 藏 展 陈 布 置 中 …</div>
 <div id="globe"></div>
 <style>
 /* 提示横幅 */
@@ -243,6 +247,8 @@ function renderMarkers(){
     markers[m.id] = {mk, m};
   });
   if (world) updateGlobePoints();
+  const sp = document.getElementById('splash');
+  if (sp){ sp.style.opacity = '0'; setTimeout(()=>sp.remove(), 600); }
 }
 function updLabels(){ document.getElementById('map').classList.toggle('show-labels', map.getZoom() >= 4); }
 map.on('zoomend', updLabels); updLabels();
@@ -405,11 +411,13 @@ vframe.addEventListener('load', ()=>{
 function armWatchdog(url){
   clearTimeout(vwd);
   vwd = setTimeout(()=>{
-    if (V && vloading.style.display !== 'none') showBlocked('加载超时（网络缓慢或对方拦截）');
+    // 15 秒未加载完成 → 直接跳转本站，不再干等
+    if (V && vloading.style.display !== 'none') location.href = V.url;
   }, 15000);
 }
 
 function openViewer(name, url, fb){
+  if (fb === false){ location.href = url; return; }  // 已知防嵌入：直接跳转，不弹卡
   V = {name, url, translated:false};
   vtitle.textContent = name;
   viewer.style.display = 'flex';
@@ -423,9 +431,9 @@ function openViewer(name, url, fb){
     .then(r=>r.json()).then(d=>{
       if(!V || V.url !== url) return;
       if(d.frameable === true){ showFrame(url); }
-      else { showBlocked(d.reason || (d.frameable===null ? '无法连通检测' : '')); }
+      else { location.href = url; }   // 防嵌入：直接跳转，不弹卡
     })
-    .catch(()=>{ if(V && V.url===url) showBlocked('检测失败'); });
+    .catch(()=>{ if(V && V.url===url) location.href=url; });
 }
 function showFrame(url){
   vblocked.style.display = 'none';
@@ -579,6 +587,17 @@ async function toggleView(){
 /* ================= 启动 ================= */
 let HAS_API = false;
 async function loadMuseums(retry){
+  // 静态版（GitHub Pages / surge）：数据已内嵌，立即渲染，不探测后端
+  if (window.MUSEUMS_EMBED && window.MUSEUMS_EMBED.length){
+    HAS_API = false;
+    MUSEUMS = window.MUSEUMS_EMBED;
+    renderMarkers(); buildChips();
+    const bd = document.getElementById('btn-discover');
+    if (bd){ bd.disabled = true; bd.style.opacity = .45; bd.title = '静态版不支持在线发现'; }
+    const bt = document.querySelector('[data-vact="translate"]');
+    if (bt) bt.style.display = 'none';
+    return;
+  }
   retry = retry == null ? 2 : retry;
   try{
     const r = await fetch('api/museums');
